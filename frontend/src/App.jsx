@@ -4,6 +4,8 @@ import './App.css'
 function App() {
   const [activeSection, setActiveSection] = useState('home')
 
+  alert("Under Construction !!")
+
   const sections = {
     home: {
       title: "Welcome to SuperLearn",
