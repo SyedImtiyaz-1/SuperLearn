@@ -1,82 +1,48 @@
-import { Link } from 'react-router-dom';
-import { FiGithub, FiTwitter, FiLinkedin, FiMail } from 'react-icons/fi';
+'use client'
 
-const navigation = {
-  main: [
-    { name: 'About', href: '/about' },
-    { name: 'Remote Jobs', href: '/jobs' },
-    { name: 'Learning Paths', href: '/learning' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Contact', href: '/contact' },
-  ],
-  social: [
-    {
-      name: 'Twitter',
-      href: 'https://twitter.com',
-      icon: FiTwitter,
-    },
-    {
-      name: 'LinkedIn',
-      href: 'https://linkedin.com',
-      icon: FiLinkedin,
-    },
-    {
-      name: 'Email',
-      href: 'mailto:contact@superlearn.com',
-      icon: FiMail,
-    },
-  ],
-};
+import Link from 'next/link'
+import { FiTwitter, FiLinkedin, FiMail } from 'react-icons/fi'
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-dark-900 border-t border-gray-200 dark:border-dark-800 transition-colors duration-200">
-      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-12 sm:py-16 lg:px-8">
-        <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
-          {navigation.main.map((item) => (
-            <div key={item.name} className="pb-6">
-              <Link
-                to={item.href}
-                className="text-sm leading-6 text-gray-600 dark:text-content-dark-muted hover:text-gray-900 dark:hover:text-content-dark transition-colors duration-200"
-              >
-                {item.name}
-              </Link>
-            </div>
-          ))}
+    <footer className="bg-accent dark:bg-dark-900 border-t border-gray-200 dark:border-dark-700 transition-colors duration-200">
+      <div className="max-w-7xl mx-auto px-4 py-10 flex flex-col items-center space-y-8 sm:space-y-0 sm:flex-row sm:justify-between">
+        {/* Navigation Links */}
+        <nav className="flex flex-col items-center space-y-2 sm:space-y-0 sm:flex-row sm:space-x-8">
+          <Link href="/about" className="text-white dark:text-white hover:text-white dark:hover:text-white text-sm">About</Link>
+          <Link href="/jobs" className="text-white dark:text-white hover:text-white dark:hover:text-white text-sm">Remote Jobs</Link>
+          <Link href="/learning" className="text-white dark:text-white hover:text-white dark:hover:text-white text-sm">Learning Paths</Link>
+          {/* Add more links as needed */}
         </nav>
-        
-        <div className="mt-10 flex justify-center space-x-10">
-          {navigation.social.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-gray-400 dark:text-content-dark-muted hover:text-gray-500 dark:hover:text-content-dark transition-colors duration-200"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
-            </a>
-          ))}
+        {/* Social Icons */}
+        <div className="flex space-x-6">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white dark:text-white hover:text-white dark:hover:text-white">
+            <FiTwitter className="h-6 w-6" />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white dark:text-white hover:text-white dark:hover:text-white">
+            <FiLinkedin className="h-6 w-6" />
+          </a>
+          <a href="mailto:contact@superlearn.com" className="text-white dark:text-white hover:text-white dark:hover:text-white">
+            <FiMail className="h-6 w-6" />
+          </a>
         </div>
-        
-        <div className="mt-10 border-t border-gray-900/10 dark:border-dark-800 pt-8">
-          <p className="text-center text-xs leading-5 text-gray-500 dark:text-content-dark-muted">
-            &copy; {new Date().getFullYear()} SuperLearn. All rights reserved.
-          </p>
-          <div className="mt-4 flex justify-center space-x-6 text-xs text-gray-500 dark:text-content-dark-muted">
-            <Link to="/privacy" className="hover:text-gray-900 dark:hover:text-content-dark">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="hover:text-gray-900 dark:hover:text-content-dark">
-              Terms of Service
-            </Link>
-            <Link to="/cookies" className="hover:text-gray-900 dark:hover:text-content-dark">
-              Cookie Policy
-            </Link>
-          </div>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 py-4 border-t border-blue-200 dark:border-dark-800 text-center text-xs text-white dark:text-content-dark-muted">
+        <div>
+          Made with <span className="text-red-500">❤️</span> by{' '}
+          <a
+            href="https://linkedin.com/in/imtiyaz-sde"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-white dark:hover:text-content-dark"
+          >
+            Syed Imtiyaz Ali
+          </a>
+        </div>
+        <div>
+          &copy; {new Date().getFullYear()} SuperLearn. All rights reserved.
         </div>
       </div>
     </footer>
-  );
+  )
 } 

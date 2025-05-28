@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode: 'class',
   theme: {
@@ -59,12 +60,22 @@ export default {
           'dark-muted': '#94a3b8',
           'dark-subtle': '#64748b',
         },
-        accent: {
-          DEFAULT: '#0ea5e9',
-          dark: '#38bdf8',
-          'dark-muted': '#0284c7',
-          'dark-subtle': '#0369a1',
-        },
+        accent: '#2563EB',
+        'accent-dark': '#1D4ED8',
+        'accent-muted': '#60A5FA',
+        'accent-dark-muted': '#93C5FD',
+        surface: '#F8FAFC',
+        'surface-dark': '#1F2937',
+        'surface-dark-elevated': '#374151',
+        'surface-dark-hover': '#4B5563',
+        content: '#1E293B',
+        'content-dark': '#F9FAFB',
+        'content-muted': '#64748B',
+        'content-dark-muted': '#9CA3AF',
+        'dark-200': '#111827',
+        'dark-700': '#374151',
+        'dark-800': '#1F2937',
+        'dark-900': '#111827',
       },
       fontFamily: {
         sans: ['Inter var', 'sans-serif'],
@@ -103,6 +114,7 @@ export default {
       boxShadow: {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
         'soft-dark': '0 2px 15px -3px rgba(0, 0, 0, 0.2), 0 10px 20px -2px rgba(0, 0, 0, 0.15)',
+        card: '0 2px 8px 0 rgba(16, 30, 54, 0.08)',
       },
     },
   },

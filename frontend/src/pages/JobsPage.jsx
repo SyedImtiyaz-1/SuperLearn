@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Dialog } from '@headlessui/react';
@@ -99,12 +101,12 @@ export default function JobsPage() {
                 placeholder="Search jobs by title, company, or skills..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="input-field pl-10 w-full dark:bg-dark-800 dark:border-dark-700 dark:text-content-dark dark:placeholder-content-dark-muted"
+                className="input-field pl-10 w-full bg-gray-100 dark:bg-dark-800 border-none rounded-xl shadow-sm dark:border-dark-700 dark:text-content-dark dark:placeholder-content-dark-muted"
               />
             </div>
             <button
               onClick={() => setIsFilterOpen(true)}
-              className="btn-secondary dark:bg-dark-800 dark:text-content-dark dark:hover:bg-dark-700 flex items-center justify-center gap-2"
+              className="flex items-center justify-center gap-2 px-6 py-2 rounded-xl bg-secondary-600 text-white font-bold shadow hover:bg-secondary-700 transition"
             >
               <FiFilter className="h-5 w-5" />
               Filters
@@ -155,7 +157,7 @@ export default function JobsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="bg-white dark:bg-dark-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
+                className="bg-white dark:bg-dark-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200 overflow-hidden"
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between">
@@ -199,7 +201,7 @@ export default function JobsPage() {
                     ))}
                   </div>
                   <div className="mt-6">
-                    <button className="btn-primary dark:bg-accent-dark dark:hover:bg-accent-dark-muted w-full sm:w-auto">
+                    <button className="flex items-center gap-2 px-6 py-2 rounded-xl bg-primary-600 text-white font-bold shadow hover:bg-primary-700 transition w-full sm:w-auto">
                       Apply Now
                     </button>
                   </div>

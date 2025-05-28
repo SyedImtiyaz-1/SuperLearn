@@ -6,6 +6,10 @@ import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import JobsPage from './pages/JobsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import InternshipsPage from './pages/InternshipsPage';
+import HackathonsPage from './pages/HackathonsPage';
+import EventsPage from './pages/EventsPage';
+import OpenSourcePage from './pages/OpenSourcePage';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,6 +31,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/jobs" element={<JobsPage />} />
+                <Route path="/internships" element={<InternshipsPage />} />
+                <Route path="/hackathons" element={<HackathonsPage />} />
+                <Route path="/events" element={<EventsPage />} />
+                <Route path="/open-source" element={<OpenSourcePage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </main>
