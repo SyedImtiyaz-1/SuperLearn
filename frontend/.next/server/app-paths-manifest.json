@@ -1,5 +1,10 @@
 {
-  "/page": "app/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/api/community-stats/route": "app/api/community-stats/route.js",
-  "/jobs/page": "app/jobs/page.js"
+  "/events/page": "app/events/page.js",
+  "/hackathons/page": "app/hackathons/page.js",
+  "/internships/page": "app/internships/page.js",
+  "/jobs/page": "app/jobs/page.js",
+  "/open-source/page": "app/open-source/page.js",
+  "/page": "app/page.js"
 }

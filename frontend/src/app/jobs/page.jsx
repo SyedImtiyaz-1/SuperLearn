@@ -1,9 +1,12 @@
-import JobsPage from '../../pages/JobsPage'
+import dynamic from "next/dynamic";
+import SearchParamsWrapper from "../../components/SearchParamsWrapper";
 
-export default function Jobs() {
+const JobsPageClient = dynamic(() => import("../../pages/JobsPage"), { ssr: false });
+
+export default function Page(props) {
   return (
-    <main className="flex-grow">
-      <JobsPage />
-    </main>
-  )
+    <SearchParamsWrapper>
+      <JobsPageClient {...props} />
+    </SearchParamsWrapper>
+  );
 } 

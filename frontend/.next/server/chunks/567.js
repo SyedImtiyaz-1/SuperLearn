@@ -1,0 +1,1 @@
+"use strict";exports.id=567,exports.ids=[567],exports.modules={8567:(e,t,r)=>{r.r(t),r.d(t,{default:()=>s});let s=(0,r(8570).createProxy)(String.raw`/home/imtiyaz/Desktop/SuperLearn/frontend/src/pages/HackathonsPage.jsx#default`)}};

@@ -1,9 +1,12 @@
-import EventsPage from '../../pages/EventsPage'
+import dynamic from "next/dynamic";
+import SearchParamsWrapper from "../../components/SearchParamsWrapper";
 
-export default function Events() {
+const EventsPageClient = dynamic(() => import("../../pages/EventsPage"), { ssr: false });
+
+export default function Page(props) {
   return (
-    <main className="flex-grow">
-      <EventsPage />
-    </main>
-  )
+    <SearchParamsWrapper>
+      <EventsPageClient {...props} />
+    </SearchParamsWrapper>
+  );
 } 

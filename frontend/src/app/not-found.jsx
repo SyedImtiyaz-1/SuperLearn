@@ -1,9 +1,12 @@
-import NotFoundPage from '../pages/NotFoundPage'
+import dynamic from "next/dynamic";
+import SearchParamsWrapper from "../components/SearchParamsWrapper";
 
-export default function NotFound() {
+const NotFoundPageClient = dynamic(() => import("../pages/NotFoundPage"), { ssr: false });
+
+export default function Page(props) {
   return (
-    <main className="flex-grow">
-      <NotFoundPage />
-    </main>
-  )
+    <SearchParamsWrapper>
+      <NotFoundPageClient {...props} />
+    </SearchParamsWrapper>
+  );
 } 

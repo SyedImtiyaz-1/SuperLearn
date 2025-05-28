@@ -71,7 +71,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-blue-50 dark:bg-dark-900 text-content dark:text-content-dark">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-white dark:from-dark-900 dark:via-dark-800 dark:to-dark-900 text-content dark:text-content-dark">
       <div className="max-w-7xl mx-auto px-4 pt-20 pb-12">
         <h1 className="text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
           <span>From </span>
@@ -114,7 +114,7 @@ export default function HomePage() {
             <span className="bg-primary-100 dark:bg-dark-700 p-4 rounded-xl mb-4">
               <FiArrowRight className="w-8 h-8 text-primary-600 dark:text-accent-dark" />
             </span>
-            <div className="font-bold text-lg text-gray-900 dark:text-white mb-1">Career Launch</div>
+            <div className="font-bold text-lg text-gray-900 dark:text-white mb-1">Explore Jobs</div>
             <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">Entry-level tech jobs</div>
             <Link href="/jobs" className="text-accent dark:text-accent-dark font-semibold hover:underline">Explore Now</Link>
           </div>
@@ -122,8 +122,8 @@ export default function HomePage() {
             <span className="bg-secondary-100 dark:bg-dark-700 p-4 rounded-xl mb-4">
               <FiBook className="w-8 h-8 text-secondary-600 dark:text-yellow-400" />
             </span>
-            <div className="font-bold text-lg text-gray-900 dark:text-white mb-1">Learning Hub</div>
-            <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">Fresher-focused resources</div>
+            <div className="font-bold text-lg text-gray-900 dark:text-white mb-1">Open Source</div>
+            <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">Guidance and Resources</div>
             <Link href="/learning" className="text-secondary-600 dark:text-yellow-400 font-semibold hover:underline">Explore Now</Link>
           </div>
           <div className="bg-white dark:bg-dark-800 border border-gray-200 dark:border-dark-700 rounded-2xl shadow-card p-8 flex flex-col items-center hover:shadow-lg transition">
@@ -236,26 +236,26 @@ export default function HomePage() {
             <div className="bg-green-50 dark:bg-dark-900 border border-green-100 dark:border-dark-700 rounded-2xl p-6 flex flex-col items-start">
               <span className="text-green-600 dark:text-green-400 text-2xl mb-2">💬</span>
               <h3 className="font-bold text-lg text-green-700 dark:text-green-400 mb-1">WhatsApp Community</h3>
-              <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">37,119 members</div>
-              <a href="#" className="text-green-700 dark:text-green-400 font-semibold hover:underline">Join Now →</a>
+              <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">1,506 members</div>
+              <a href="https://whatsapp.com/channel/0029VaCZjes9mrGc5zhJm72E" className="text-green-700 dark:text-green-400 font-semibold hover:underline">Join Now →</a>
             </div>
             <div className="bg-blue-50 dark:bg-dark-900 border border-blue-100 dark:border-dark-700 rounded-2xl p-6 flex flex-col items-start">
               <span className="text-blue-600 dark:text-white text-2xl mb-2">🔗</span>
-              <h3 className="font-bold text-lg text-blue-700 dark:text-white mb-1">LinkedIn Group</h3>
-              <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">41,954 followers</div>
-              <a href="#" className="text-blue-700 dark:text-white font-semibold hover:underline">Join Now →</a>
+              <h3 className="font-bold text-lg text-blue-700 dark:text-white mb-1">LinkedIn Profile</h3>
+              <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">14,003 followers</div>
+              <a href="https://www.linkedin.com/in/imtiyaz-sde/" className="text-blue-700 dark:text-white font-semibold hover:underline">Join Now →</a>
             </div>
             <div className="bg-blue-50 dark:bg-dark-900 border border-blue-100 dark:border-dark-700 rounded-2xl p-6 flex flex-col items-start">
               <span className="text-blue-500 dark:text-blue-400 text-2xl mb-2">📢</span>
               <h3 className="font-bold text-lg text-blue-700 dark:text-white mb-1">Telegram Channel</h3>
               <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">2,711 subscribers</div>
-              <a href="#" className="text-blue-700 dark:text-white font-semibold hover:underline">Join Now →</a>
+              <a href="https://t.me/Imtiyaz100xCoders" className="text-blue-700 dark:text-white font-semibold hover:underline">Join Now →</a>
             </div>
             <div className="bg-purple-50 dark:bg-dark-900 border border-purple-100 dark:border-dark-700 rounded-2xl p-6 flex flex-col items-start">
               <span className="text-purple-600 dark:text-purple-400 text-2xl mb-2">🎮</span>
               <h3 className="font-bold text-lg text-purple-700 dark:text-purple-400 mb-1">Discord Server</h3>
-              <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">5,000+ active members</div>
-              <a href="#" className="text-purple-700 dark:text-purple-400 font-semibold hover:underline">Join Now →</a>
+              <div className="text-gray-500 dark:text-content-dark-muted text-sm mb-2">Coming Soon..</div>
+              <a href="#" className="text-purple-700 dark:text-purple-400 font-semibold hover:underline pointer-events-none opacity-50" aria-disabled="true">Join Now →</a>
             </div>
           </div>
         </div>

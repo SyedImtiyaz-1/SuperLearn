@@ -1,9 +1,12 @@
-import InternshipsPage from '../../pages/InternshipsPage'
+import dynamic from "next/dynamic";
+import SearchParamsWrapper from "../../components/SearchParamsWrapper";
 
-export default function Internships() {
+const InternshipsPageClient = dynamic(() => import("../../pages/InternshipsPage"), { ssr: false });
+
+export default function Page(props) {
   return (
-    <main className="flex-grow">
-      <InternshipsPage />
-    </main>
-  )
+    <SearchParamsWrapper>
+      <InternshipsPageClient {...props} />
+    </SearchParamsWrapper>
+  );
 } 

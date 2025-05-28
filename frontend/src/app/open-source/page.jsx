@@ -1,9 +1,12 @@
-import OpenSourcePage from '../../pages/OpenSourcePage'
+import dynamic from "next/dynamic";
+import SearchParamsWrapper from "../../components/SearchParamsWrapper";
 
-export default function OpenSource() {
+const OpenSourcePageClient = dynamic(() => import("../../pages/OpenSourcePage"), { ssr: false });
+
+export default function Page(props) {
   return (
-    <main className="flex-grow">
-      <OpenSourcePage />
-    </main>
-  )
+    <SearchParamsWrapper>
+      <OpenSourcePageClient {...props} />
+    </SearchParamsWrapper>
+  );
 } 

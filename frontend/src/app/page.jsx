@@ -1,9 +1,12 @@
-import HomePage from '../pages/HomePage'
+import dynamic from "next/dynamic";
+import SearchParamsWrapper from "../components/SearchParamsWrapper";
 
-export default function Home() {
+const HomePageClient = dynamic(() => import("../pages/HomePage"), { ssr: false });
+
+export default function Page(props) {
   return (
-    <main className="flex-grow">
-      <HomePage />
-    </main>
-  )
+    <SearchParamsWrapper>
+      <HomePageClient {...props} />
+    </SearchParamsWrapper>
+  );
 } 

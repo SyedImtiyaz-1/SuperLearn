@@ -188,7 +188,7 @@ export default function Navbar() {
                 </div>
                 <input
                   type="text"
-                  placeholder="Search jobs, roadmaps & more.."
+                  placeholder="Search jobs, roadmaps, etc."
                   className="input-field pl-10 w-64 bg-surface dark:bg-surface-dark-elevated border-gray-200 dark:border-gray-700 text-content dark:text-content-dark placeholder-content-muted dark:placeholder-content-dark-muted"
                 />
               </div>
