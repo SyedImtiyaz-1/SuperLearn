@@ -1,12 +1,22 @@
-import dynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 import SearchParamsWrapper from "../../components/SearchParamsWrapper";
 
-const EventsPageClient = dynamic(() => import("../../pages/EventsPage"), { ssr: false });
+const EventsPageClient = dynamicImport(() => import("../../pages/EventsPage"), { 
+  ssr: false,
+  loading: () => (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div>
+    </div>
+  )
+});
 
-export default function Page(props) {
+export const dynamic = 'force-static'
+export const revalidate = 3600 // revalidate every hour
+
+export default function Page() {
   return (
     <SearchParamsWrapper>
-      <EventsPageClient {...props} />
+      <EventsPageClient />
     </SearchParamsWrapper>
   );
 } 

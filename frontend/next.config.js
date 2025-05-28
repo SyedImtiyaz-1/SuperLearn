@@ -4,10 +4,13 @@ const nextConfig = {
   swcMinify: true,
   // Enable static optimization for pages that can be statically generated
   poweredByHeader: false,
-  // Configure any image domains if needed
+  output: 'export',  // Enable static exports
   images: {
+    unoptimized: true, // Required for static export
     domains: [],
   },
+  // Disable server-side features since we're doing static export
+  trailingSlash: true,
 }
 
 module.exports = nextConfig 
