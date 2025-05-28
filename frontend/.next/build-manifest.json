@@ -5,32 +5,32 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/irjitw3AH3w1vGzBdbAKI/_buildManifest.js",
-    "static/irjitw3AH3w1vGzBdbAKI/_ssgManifest.js"
+    "static/Or2x0vc9A8LAPaANs4qYI/_buildManifest.js",
+    "static/Or2x0vc9A8LAPaANs4qYI/_ssgManifest.js"
   ],
   "rootMainFiles": [
     "static/chunks/webpack-66afddb24915422d.js",
-    "static/chunks/fd9d1056-7e8ab1b0643ca0cb.js",
-    "static/chunks/117-20ec3c5fe16ce8d2.js",
+    "static/chunks/fd9d1056-a4e252c075bdd8d4.js",
+    "static/chunks/117-3bee3f94ee585db7.js",
     "static/chunks/main-app-eb9bb27153fd082f.js"
   ],
   "pages": {
     "/EventsPage": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/pages/EventsPage-f7cb4fe509c692f9.js"
     ],
     "/HackathonsPage": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/pages/HackathonsPage-3018f7a57b0f1591.js"
     ],
     "/HomePage": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/36d2f571-3bd11b3e46138eaa.js",
       "static/chunks/429-832e3565e94ed398.js",
       "static/chunks/pages/HomePage-557f671670570055.js"
@@ -38,13 +38,13 @@
     "/InternshipsPage": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/pages/InternshipsPage-8db68a76209662d9.js"
     ],
     "/JobsPage": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/36d2f571-3bd11b3e46138eaa.js",
       "static/chunks/622-b56f7889145b4105.js",
       "static/chunks/pages/JobsPage-0053dc31425f74b3.js"
@@ -52,7 +52,7 @@
     "/NotFoundPage": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/36d2f571-3bd11b3e46138eaa.js",
       "static/chunks/429-832e3565e94ed398.js",
       "static/chunks/pages/NotFoundPage-5fb583d8451b4410.js"
@@ -60,25 +60,25 @@
     "/OpenSourcePage": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/pages/OpenSourcePage-72c9f7b108d0deb4.js"
     ],
     "/RoadmapsPage": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/pages/RoadmapsPage-eee51125c0d01773.js"
     ],
     "/_app": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/pages/_app-72b849fbd24ac258.js"
     ],
     "/_error": [
       "static/chunks/webpack-66afddb24915422d.js",
       "static/chunks/framework-5fbe252a89ea1ead.js",
-      "static/chunks/main-5de45da6607d77df.js",
+      "static/chunks/main-e9d0ac79c658b479.js",
       "static/chunks/pages/_error-7ba65e1336b92748.js"
     ]
   },
