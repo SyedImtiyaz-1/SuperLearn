@@ -3,6 +3,7 @@
     "@clerk/nextjs": "^6.20.1",
     "@headlessui/react": "^2.2.4",
     "framer-motion": "^12.15.0",
+    "picocolors": "^1.1.1",
     "react-icons": "^5.5.0",
     "tailwindcss": "^4.1.8"
   },
