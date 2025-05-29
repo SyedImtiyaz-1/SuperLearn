@@ -169,7 +169,7 @@ export default function JobsPage() {
                         {job.company}
                       </p>
                     </div>
-                    <span className="inline-flex items-center rounded-md bg-primary-50 dark:bg-dark-700 px-2 py-1 text-xs font-medium text-primary-700 dark:text-accent-dark ring-1 ring-inset ring-primary-600/20 dark:ring-accent-dark/20">
+                    <span className="inline-flex items-center rounded-md bg-primary-50 dark:bg-dark-700 px-2 py-1 text-xs font-medium text-primary-700 dark:text-white ring-1 ring-inset ring-primary-600/20 dark:ring-accent-dark/20">
                       {job.type}
                     </span>
                   </div>

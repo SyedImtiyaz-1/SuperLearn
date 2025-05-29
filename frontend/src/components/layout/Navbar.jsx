@@ -2,10 +2,11 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { Dialog } from '@headlessui/react';
 import { FiMenu, FiX, FiSearch, FiBriefcase, FiMap, FiFlag, FiCalendar, FiGlobe, FiSun, FiMoon } from 'react-icons/fi';
 import { useTheme } from 'next-themes';
+import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
 
 const navigation = [
   {
@@ -67,6 +68,8 @@ export default function Navbar() {
   });
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const router = useRouter();
+  const { user } = useUser();
 
   // Ensure theme toggle is only rendered on client
   useEffect(() => {
@@ -110,9 +113,9 @@ export default function Navbar() {
         aria-label="Toggle theme"
       >
         {theme === 'dark' ? (
-          <FiSun className="w-5 h-5 text-accent-dark" />
+          <FiMoon className="w-5 h-5 text-white" />
         ) : (
-          <FiMoon className="w-5 h-5 text-accent" />
+          <FiSun className="w-5 h-5 text-black-400" />
         )}
       </button>
     );
@@ -124,7 +127,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-white dark:text-accent-dark">SuperLearn</span>
+              <span className="text-2xl font-bold text-white">SuperLearn</span>
             </Link>
             <div className="hidden lg:block ml-10">
               <div>
@@ -140,8 +143,8 @@ export default function Navbar() {
                         onClick={() => setOpenDropdown(openDropdown === link.name ? null : link.name)}
                         className={`flex items-center gap-1 text-base font-medium transition-colors duration-200 whitespace-nowrap focus:outline-none ${
                           isActive(link.dropdown?.[0]?.href.split('?')[0] || link.href)
-                            ? 'text-white dark:text-accent-dark'
-                            : 'text-white/80 dark:text-content-dark-muted hover:text-white dark:hover:text-content-dark'
+                            ? 'text-blue-50 dark:text-white drop-shadow-sm'
+                            : 'text-blue-100 dark:text-white hover:text-blue-50 dark:hover:text-white drop-shadow-sm'
                         }`}
                       >
                         <link.icon className="mr-1 mb-0.5" />
@@ -149,7 +152,7 @@ export default function Navbar() {
                         <span className="ml-1">&#9662;</span>
                       </button>
                       {openDropdown === link.name && (
-                        <div className="absolute left-0 z-50 mt-2 w-56 max-w-[90vw] rounded-xl bg-white dark:bg-dark-800 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none py-2">
+                        <div className="absolute left-0 z-50 mt-2 w-56 max-w-[90vw] rounded-xl bg-accent dark:bg-dark-800 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none py-2">
                           {link.dropdown.map((item) => (
                             <Link
                               key={item.name}
@@ -157,8 +160,9 @@ export default function Navbar() {
                               className={`block px-4 py-2 text-sm rounded-md transition-colors duration-150 whitespace-nowrap ${
                                 isActive(item.href)
                                   ? 'bg-blue-100 dark:bg-dark-700 text-accent dark:text-accent-dark'
-                                  : 'text-blue-900 dark:text-content-dark-muted hover:bg-blue-50 dark:hover:bg-dark-700 hover:text-accent dark:hover:text-accent-dark'
+                                  : 'text-white hover:text-white hover:bg-blue-400 dark:hover:bg-dark-700'
                               }`}
+                              onClick={() => setOpenDropdown(null)}
                             >
                               {item.name}
                             </Link>
@@ -184,9 +188,19 @@ export default function Navbar() {
               />
             </div>
             <ThemeToggle />
-            <Link href="/login" className="btn-primary bg-white/10 text-white px-4 py-2 rounded-xl font-bold hover:bg-white/20 transition">
-              Sign In
-            </Link>
+            <SignedIn>
+              <div className="flex items-center gap-2">
+                <span className="text-white font-semibold">Hi, {user?.firstName || user?.username || "there"}</span>
+                <UserButton afterSignOutUrl="/" />
+              </div>
+            </SignedIn>
+            <SignedOut>
+              <SignInButton>
+                <button className="block w-full text-center px-2 py-1 text-base font-semibold leading-7 text-white border border-white rounded-xl hover:bg-white/10 transition">
+                  Sign In
+                </button>
+              </SignInButton>
+            </SignedOut>
           </div>
 
           <div className="flex lg:hidden items-center space-x-2">
@@ -197,7 +211,7 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open menu</span>
-              <FiMenu className="h-6 w-6" aria-hidden="true" />
+              <FiMenu className="h-6 w-6 text-white" aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -208,7 +222,7 @@ export default function Navbar() {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-accent dark:bg-surface-dark px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:ring-gray-700/10">
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="text-2xl font-bold text-white dark:text-accent-dark">SuperLearn</span>
+              <span className="text-2xl font-bold text-white">SuperLearn</span>
             </Link>
             <button
               type="button"
@@ -225,13 +239,13 @@ export default function Navbar() {
                 {navigation.map((link, idx) => (
                   <div key={link.name} className="">
                     <button
-                      className="flex items-center gap-2 w-full px-3 py-2 text-base font-semibold leading-7 transition-colors duration-200 whitespace-nowrap text-white dark:text-accent-dark hover:text-white dark:hover:text-content-dark focus:outline-none"
+                      className="flex items-center gap-2 w-full px-3 py-2 text-base font-semibold leading-7 transition-colors duration-200 whitespace-nowrap text-white hover:text-white focus:outline-none"
                       onClick={() => setOpenMobileDropdown(openMobileDropdown === idx ? null : idx)}
                       aria-expanded={openMobileDropdown === idx}
                     >
-                      {link.icon && <link.icon className="mr-1 mb-0.5" />}
+                      {link.icon && <link.icon className="mr-1 mb-0.5 text-white" />}
                       {link.name}
-                      <span className="ml-1">&#9662;</span>
+                      <span className="ml-1 text-white">&#9662;</span>
                     </button>
                     {openMobileDropdown === idx && (
                       <div className="mt-2 space-y-1">
@@ -239,10 +253,11 @@ export default function Navbar() {
                           <Link
                             key={item.name}
                             href={item.href}
+                            onClick={() => setMobileMenuOpen(false)}
                             className={`block px-3 py-2 text-sm rounded-md transition-colors duration-150 ${
                               isActive(item.href)
                                 ? 'bg-blue-100 dark:bg-dark-700 text-accent dark:text-accent-dark'
-                                : 'text-white/80 dark:text-content-dark-muted hover:bg-blue-50 dark:hover:bg-dark-700 hover:text-white dark:hover:text-content-dark'
+                                : 'text-white hover:text-white hover:bg-blue-400 dark:hover:bg-dark-700'
                             }`}
                           >
                             {item.name}
@@ -254,12 +269,19 @@ export default function Navbar() {
                 ))}
               </div>
               <div className="py-6">
-                <Link
-                  href="/login"
-                  className="block w-full text-center px-3 py-2 text-base font-semibold leading-7 text-white dark:text-accent-dark hover:text-white dark:hover:text-content-dark"
-                >
-                  Sign In
-                </Link>
+                <SignedIn>
+                  <div className="flex items-center gap-2 justify-center">
+                    <span className="text-white font-semibold">Hi, {user?.firstName || user?.username || "there"}</span>
+                    <UserButton afterSignOutUrl="/" />
+                  </div>
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton>
+                    <button className="block w-full text-center px-2 py-1 text-base font-semibold leading-7 text-white border border-white rounded-xl hover:bg-white/10 transition">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                </SignedOut>
               </div>
             </div>
           </div>
