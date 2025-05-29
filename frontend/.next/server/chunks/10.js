@@ -1,1 +1,0 @@
-"use strict";exports.id=10,exports.ids=[10],exports.modules={10:(e,r,t)=>{t.r(r),t.d(r,{default:()=>s});let s=(0,t(8570).createProxy)(String.raw`/home/imtiyaz/Desktop/SuperLearn/frontend/src/pages/InternshipsPage.jsx#default`)}};
