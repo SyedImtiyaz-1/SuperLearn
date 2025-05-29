@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   reactStrictMode: true,
   // Enable static optimization for pages that can be statically generated
   poweredByHeader: false,
