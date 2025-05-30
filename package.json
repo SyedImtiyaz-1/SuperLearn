@@ -1,13 +1,16 @@
 {
   "dependencies": {
+    "@clerk/backend": "^1.34.0",
     "@clerk/nextjs": "^6.20.1",
     "@headlessui/react": "^2.2.4",
     "framer-motion": "^12.15.0",
     "picocolors": "^1.1.1",
     "react-icons": "^5.5.0",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.8",
+    "wrangler": "^4.18.0"
   },
   "devDependencies": {
     "@types/react-icons": "^2.2.7"
-  }
+  },
+  "packageManager": "yarn@4.6.0+sha512.5383cc12567a95f1d668fbe762dfe0075c595b4bfff433be478dbbe24e05251a8e8c3eb992a986667c1d53b6c3a9c85b8398c35a960587fbd9fa3a0915406728"
 }
