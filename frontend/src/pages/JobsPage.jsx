@@ -28,9 +28,9 @@ export default function JobsPage() {
   const [loadingMore, setLoadingMore] = useState(false); // State for loading more
   const [error, setError] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
-  const [keyword, setKeyword] = useState('software engineer'); // State for primary keyword input (reflects input value)
-  const [searchTerm, setSearchTerm] = useState('software engineer'); // State that triggers the actual search
-  const [currentFetchKeyword, setCurrentFetchKeyword] = useState('software engineer'); // Keyword used for current API fetch
+  const [keyword, setKeyword] = useState(''); // State for primary keyword input (reflects input value)
+  const [searchTerm, setSearchTerm] = useState(''); // State that triggers the actual search
+  const [currentFetchKeyword, setCurrentFetchKeyword] = useState(''); // Keyword used for current API fetch
   const [currentPage, setCurrentPage] = useState(0); // Track current page
   const [hasMore, setHasMore] = useState(true); // Track if there are more jobs
   const [isFilterOpen, setIsFilterOpen] = useState(false);

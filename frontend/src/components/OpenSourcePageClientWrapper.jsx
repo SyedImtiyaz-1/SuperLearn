@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-const OpenSourcePageClient = dynamic(() => import("../../pages/OpenSourcePage"), {
+const OpenSourcePageClient = dynamic(() => import("../pages/OpenSourcePage"), {
   ssr: false,
   loading: () => (
     <div className="min-h-screen flex items-center justify-center">

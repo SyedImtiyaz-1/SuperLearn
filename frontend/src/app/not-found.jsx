@@ -1,18 +1,10 @@
-import dynamic from "next/dynamic";
-import SearchParamsWrapper from "../components/SearchParamsWrapper";
-
-const NotFoundPageClient = dynamic(() => import("../pages/NotFoundPage"), { 
-  loading: () => (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div>
-    </div>
-  )
-});
+import { Suspense } from 'react';
+import NotFoundPageClient from '../pages/NotFoundPage';
 
 export default function Page() {
   return (
-    <SearchParamsWrapper>
+    <Suspense fallback={<div>Loading...</div>}>
       <NotFoundPageClient />
-    </SearchParamsWrapper>
+    </Suspense>
   );
 } 

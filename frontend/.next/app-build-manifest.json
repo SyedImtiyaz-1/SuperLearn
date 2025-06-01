@@ -21,6 +21,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/community-stats/route.js"
     ],
+    "/jobs/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/jobs/layout.js"
+    ],
     "/jobs/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
