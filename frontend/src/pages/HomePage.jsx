@@ -338,15 +338,6 @@ export default function HomePage() {
           </div>
         </section>
       </div>
-      {/* Purple diagonal design at the bottom */}
-      <div
-        className="w-full h-40 md:h-64 bg-accent dark:hidden"
-        style={{
-          clipPath: "polygon(0 30%, 100% 0, 100% 100%, 0% 100%)",
-          position: "relative",
-          zIndex: 1,
-        }}
-      />
     </>
   )
 } 

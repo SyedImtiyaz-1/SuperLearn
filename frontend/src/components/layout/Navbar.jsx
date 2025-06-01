@@ -13,8 +13,8 @@ const navigation = [
     name: 'Jobs',
     icon: FiBriefcase,
     dropdown: [
+      { name: 'All Jobs', href: '/jobs?type=fulltime' },
       { name: 'Intern', href: '/jobs?type=intern' },
-      { name: 'Full-Time', href: '/jobs?type=fulltime' },
       { name: 'Remote', href: '/jobs?type=remote' },
     ],
   },
@@ -113,9 +113,9 @@ export default function Navbar() {
         aria-label="Toggle theme"
       >
         {theme === 'dark' ? (
-          <FiMoon className="w-5 h-5 text-white" />
+          <FiSun className="w-5 h-5 text-white" />
         ) : (
-          <FiSun className="w-5 h-5 text-black-400" />
+          <FiMoon className="w-5 h-5 text-black-400" />
         )}
       </button>
     );
@@ -188,7 +188,7 @@ export default function Navbar() {
               />
             </div>
             <ThemeToggle />
-            <SignedIn>
+            {/* <SignedIn>
               <div className="flex items-center gap-2">
                 <span className="text-white font-semibold">Hi, {user?.firstName || user?.username || "there"}</span>
                 <UserButton afterSignOutUrl="/" />
@@ -200,7 +200,7 @@ export default function Navbar() {
                   Sign In
                 </button>
               </SignInButton>
-            </SignedOut>
+            </SignedOut> */}
           </div>
 
           <div className="flex lg:hidden items-center space-x-2">

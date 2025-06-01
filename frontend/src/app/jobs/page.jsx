@@ -1,22 +1,8 @@
-import dynamicImport from "next/dynamic";
-import SearchParamsWrapper from "../../components/SearchParamsWrapper";
+import JobsPageWrapper from './JobsPageClient';
 
-const JobsPageClient = dynamicImport(() => import("../../pages/JobsPage"), {
-  ssr: false,
-  loading: () => (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div>
-    </div>
-  )
-});
-
-export const dynamic = "force-static";
+export const dynamic = 'force-dynamic';
 export const revalidate = 3600; // revalidate every hour
 
-export default function Page() {
-  return (
-    <SearchParamsWrapper>
-      <JobsPageClient />
-    </SearchParamsWrapper>
-  );
+export default function JobsPage() {
+  return <JobsPageWrapper />;
 } 
