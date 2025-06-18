@@ -26,25 +26,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/roadmaps/dsa/page.js"
     ],
-    "/_not-found/page": [
+    "/api/execute-code/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
-    ],
-    "/jobs/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/jobs/layout.js"
-    ],
-    "/jobs/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/jobs/page.js"
-    ],
-    "/api/jobs/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/jobs/route.js"
+      "static/chunks/app/api/execute-code/route.js"
     ]
   }
 }

@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DsaSidebar from './components/DsaSidebar';
+import CodePlayground from './components/CodePlayground';
 
 // Add responsive utility classes
 const responsiveClasses = {
   text: "text-sm lg:text-base",
   heading: "text-lg lg:text-xl font-semibold mb-2 lg:mb-4",
   subheading: "text-base lg:text-lg font-semibold mb-2",
-  paragraph: "text-sm lg:text-base text-white-700 mb-4",
-  list: "list-disc list-inside text-white-700 space-y-1 text-sm lg:text-base",
+  paragraph: "text-sm lg:text-base text-black dark:text-white mb-4",
+  list: "list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base",
   codeBlock: "bg-gray-100 p-3 lg:p-4 rounded-lg",
   codeText: "text-xs lg:text-sm text-dark-600 overflow-x-auto",
   table: "min-w-full bg-gray-100 rounded-lg text-xs lg:text-sm",
-  tableCell: "p-2 lg:p-3 text-dark-600",
+  tableCell: "p-2 lg:p-3 text-dark-600 dark:text-white",
   tableHeader: "p-2 lg:p-3 text-dark-600 font-semibold"
 };
 
@@ -27,10 +28,10 @@ const topics = [
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction</h4>
-          <p className="text-white-700 mb-4 text-sm lg:text-base">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             A programming language is a set of instructions and syntax used to create software programs. Some of the key features of programming languages include:
           </p>
-          <ul className="list-disc list-inside text-white-700 space-y-1 mb-4 text-sm lg:text-base">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Syntax:</strong> The specific rules and structure used to write code in a programming language.</li>
             <li><strong>Data Types:</strong> The type of values that can be stored in a program, such as numbers, strings, and booleans.</li>
             <li><strong>Variables:</strong> Named memory locations that can store values.</li>
@@ -43,24 +44,24 @@ const topics = [
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Popular Programming Languages</h4>
-          <p className="text-white-700 mb-2 text-sm lg:text-base">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Examples of popular programming languages include Python, Java, C++, JavaScript, and Ruby. Each language has its own strengths and weaknesses and is suited for different types of projects.
           </p>
           <div className="grid text-dark-600 grid-cols-2 md:grid-cols-4 gap-2 text-xs lg:text-sm">
-            <div className="bg-blue-50 p-2 rounded">C</div>
-            <div className="bg-blue-50 p-2 rounded">Python</div>
-            <div className="bg-blue-50 p-2 rounded">C++</div>
-            <div className="bg-blue-50 p-2 rounded">Java</div>
-            <div className="bg-blue-50 p-2 rounded">JavaScript</div>
-            <div className="bg-blue-50 p-2 rounded">C#</div>
-            <div className="bg-blue-50 p-2 rounded">Ruby</div>
-            <div className="bg-blue-50 p-2 rounded">Go</div>
+            <div className="bg-blue-50 dark:bg-blue-900/70 dark:text-blue-100 p-2 rounded flex items-center gap-2 transition-colors"><span role='img' aria-label='C'>💻</span> C</div>
+            <div className="bg-blue-50 dark:bg-blue-900/70 dark:text-blue-100 p-2 rounded flex items-center gap-2 transition-colors"><span role='img' aria-label='Python'>🐍</span> Python</div>
+            <div className="bg-blue-50 dark:bg-blue-900/70 dark:text-blue-100 p-2 rounded flex items-center gap-2 transition-colors"><span role='img' aria-label='C++'>💾</span> C++</div>
+            <div className="bg-blue-50 dark:bg-blue-900/70 dark:text-blue-100 p-2 rounded flex items-center gap-2 transition-colors"><span role='img' aria-label='Java'>☕</span> Java</div>
+            <div className="bg-blue-50 dark:bg-blue-900/70 dark:text-blue-100 p-2 rounded flex items-center gap-2 transition-colors"><span role='img' aria-label='JavaScript'>✨</span> JavaScript</div>
+            <div className="bg-blue-50 dark:bg-blue-900/70 dark:text-blue-100 p-2 rounded flex items-center gap-2 transition-colors"><span role='img' aria-label='C#'>#️⃣</span> C#</div>
+            <div className="bg-blue-50 dark:bg-blue-900/70 dark:text-blue-100 p-2 rounded flex items-center gap-2 transition-colors"><span role='img' aria-label='Ruby'>💎</span> Ruby</div>
+            <div className="bg-blue-50 dark:bg-blue-900/70 dark:text-blue-100 p-2 rounded flex items-center gap-2 transition-colors"><span role='img' aria-label='Go'>🐹</span> Go</div>
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Basic Terminologies in Programming Languages</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1 text-sm lg:text-base">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Algorithm:</strong> A step-by-step procedure for solving a problem or performing a task.</li>
             <li><strong>Variable:</strong> A named storage location in memory that holds a value or data.</li>
             <li><strong>Data Type:</strong> A classification that specifies what type of data a variable can hold.</li>
@@ -74,10 +75,8 @@ const topics = [
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Basic Example: Adding Two Numbers</h4>
-          <div className="bg-gray-100 p-3 lg:p-4 rounded-lg">
-            <p className="text-xs lg:text-sm text-dark-600 mb-2">C++ Example:</p>
-            <pre className="text-xs lg:text-sm text-dark-600 overflow-x-auto">
-              {`#include <iostream>
+          <CodePlayground
+            initialCode={`#include <iostream>
 using namespace std;
 
 int main() {  
@@ -88,14 +87,13 @@ int main() {
     cout << "Sum of " << a << " and " << b << " is: " << sum;
     return 0;
 }`}
-            </pre>
-            <p className="text-xs lg:text-sm text-white-600 mt-2">Output: Sum of 10 and 15 is: 25</p>
-          </div>
+            language="cpp"
+          />
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Characteristics of a Programming Language</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1 text-sm lg:text-base">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li>Simple, easy to learn and use, with good readability</li>
             <li>Abstraction capability for complex structures</li>
             <li>Portability across different platforms</li>
@@ -109,7 +107,7 @@ int main() {
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Tips for Learning New Programming Languages</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1 text-sm lg:text-base">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Start with fundamentals:</strong> Learn syntax, data types, variables, and simple statements</li>
             <li><strong>Code daily:</strong> Practice regularly to improve your skills</li>
             <li><strong>Work on projects:</strong> Apply what you've learned to real projects</li>
@@ -128,143 +126,170 @@ int main() {
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 2: Basic Data Structures</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction to Data Structures</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             Data structures are fundamental building blocks of computer science that organize and store data in a way that enables efficient access and modification. Understanding these basic structures is crucial for writing efficient algorithms.
           </p>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">1. Arrays</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Arrays are the simplest data structure that stores elements of the same data type in contiguous memory locations.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Key Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Key Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Fixed size (in most languages)</li>
               <li>Random access - O(1) time complexity</li>
               <li>Contiguous memory allocation</li>
               <li>Index-based access</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-sm text-dark-600 mb-2">Operations & Time Complexity:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 dark:bg-gray-800/80  dark:text-white p-4 rounded-lg">
+            <p className="text-sm text-black dark:text-white mb-2">Operations & Time Complexity:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Access: O(1)</li>
               <li>Search: O(n)</li>
               <li>Insertion: O(n)</li>
               <li>Deletion: O(n)</li>
             </ul>
           </div>
+          <br />
+          <CodePlayground
+            initialCode={`# Array Example in Python\narr = [1, 2, 3, 4, 5]\nprint('Original array:', arr)\narr.append(6)\nprint('After appending 6:', arr)\narr.pop()\nprint('After popping:', arr)\nprint('Element at index 2:', arr[2])`}
+            language="python"
+          />
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">2. Linked Lists</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A linked list is a linear data structure where elements are stored in nodes, and each node points to the next node in the sequence.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Types of Linked Lists:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Types of Linked Lists:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Singly Linked List</li>
               <li>Doubly Linked List</li>
               <li>Circular Linked List</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-sm text-dark-600 mb-2">Operations & Time Complexity:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <p className="text-sm text-black dark:text-white mb-2">Operations & Time Complexity:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Access: O(n)</li>
               <li>Search: O(n)</li>
               <li>Insertion: O(1) at beginning, O(n) at end</li>
               <li>Deletion: O(1) at beginning, O(n) at end</li>
             </ul>
           </div>
+          <br />
+          <CodePlayground
+            initialCode={`# Singly Linked List Example in Python\nclass Node:\n    def __init__(self, data):\n        self.data = data\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, data):\n        new_node = Node(data)\n        if not self.head:\n            self.head = new_node\n            return\n        last = self.head\n        while last.next:\n            last = last.next\n        last.next = new_node\n\n    def print_list(self):\n        curr = self.head\n        while curr:\n            print(curr.data, end=' ')\n            curr = curr.next\n        print()\n\nll = LinkedList()\nll.append(1)\nll.append(2)\nll.append(3)\nll.print_list()  # Output: 1 2 3`}
+            language="python"
+          />
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">3. Stacks</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A stack is a linear data structure that follows the Last In, First Out (LIFO) principle. Elements can only be added or removed from the top.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Common Operations:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Common Operations:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>push() - Add element to top</li>
               <li>pop() - Remove element from top</li>
               <li>peek() - View top element</li>
               <li>isEmpty() - Check if stack is empty</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-sm text-dark-600 mb-2">Applications:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <p className="text-sm text-black dark:text-white mb-2">Applications:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Function call management</li>
               <li>Undo operations</li>
               <li>Expression evaluation</li>
               <li>Backtracking algorithms</li>
             </ul>
           </div>
+          <br />
+          <CodePlayground
+            initialCode={`class Stack:\n    def __init__(self):\n        self.items = []\n    \n    def push(self, item):\n        self.items.append(item)\n    \n    def pop(self):\n        if not self.is_empty():\n            return self.items.pop()\n        return None\n    \n    def peek(self):\n        if not self.is_empty():\n            return self.items[-1]\n        return None\n    \n    def is_empty(self):\n        return len(self.items) == 0\n    \n    def size(self):\n        return len(self.items)\n\n# Usage\nstack = Stack()\nstack.push(1)\nstack.push(2)\nstack.push(3)\nprint(stack.pop())  # Output: 3`}
+            language="python"
+          />
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">4. Queues</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A queue is a linear data structure that follows the First In, First Out (FIFO) principle. Elements are added at the rear and removed from the front.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Types of Queues:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Types of Queues:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Simple Queue</li>
               <li>Circular Queue</li>
               <li>Priority Queue</li>
               <li>Double-ended Queue (Deque)</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-sm text-dark-600 mb-2">Applications:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <p className="text-sm text-black dark:text-white mb-2">Applications:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Task scheduling</li>
               <li>Breadth-First Search</li>
               <li>Print spooling</li>
               <li>CPU scheduling</li>
             </ul>
           </div>
+          <br />
+          <CodePlayground
+            initialCode={`from collections import deque\n\n# Queue Example in Python\nqueue = deque()\nqueue.append(1)\nqueue.append(2)\nqueue.append(3)\nprint('Queue after enqueuing:', list(queue))\nqueue.popleft()\nprint('Queue after dequeuing:', list(queue))`}
+            language="python"
+          />
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">5. Hash Tables</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A hash table is a data structure that stores key-value pairs and uses a hash function to compute an index into an array of buckets.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Key Features:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Key Features:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Average O(1) time complexity for search, insert, delete</li>
               <li>Uses hash function for key mapping</li>
               <li>Handles collisions through chaining or open addressing</li>
               <li>Unordered data storage</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-sm text-dark-600 mb-2">Applications:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <p className="text-sm text-black dark:text-white mb-2">Applications:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Database indexing</li>
               <li>Cache implementation</li>
               <li>Symbol tables in compilers</li>
               <li>Duplicate detection</li>
             </ul>
           </div>
+          <br />
+          <CodePlayground
+            initialCode={`# Hash Table Example in Python\nhash_table = {}\nhash_table['a'] = 1\nhash_table['b'] = 2\nhash_table['c'] = 3\nprint('Hash table:', hash_table)\nprint('Value for key "b":', hash_table['b'])\ndel hash_table['a']\nprint('After deleting key "a":', hash_table)`}
+            language="python"
+          />
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Implementation Example: Stack in Python</h4>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class Stack:
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg">
+            <pre className="text-sm text-black overflow-x-auto">
+              <CodePlayground
+                initialCode=
+                {`class Stack:
     def __init__(self):
         self.items = []
     
@@ -293,6 +318,8 @@ stack.push(1)
 stack.push(2)
 stack.push(3)
 print(stack.pop())  # Output: 3`}
+
+              />
             </pre>
           </div>
         </div>
@@ -305,22 +332,22 @@ print(stack.pop())  # Output: 3`}
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 3: Algorithmic Complexity (Big O Notation)</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction to Algorithmic Complexity</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             Algorithmic complexity is a measure of the efficiency of an algorithm in terms of time and space requirements. Big O notation is the most common way to express this complexity, helping us understand how an algorithm's performance scales with input size.
           </p>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">What is Big O Notation?</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Big O notation describes the upper bound of an algorithm's growth rate. It helps us understand the worst-case scenario for an algorithm's performance.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-sm text-dark-600 mb-2">Key Concepts:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Key Concepts:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Measures growth rate, not actual time</li>
               <li>Focuses on the dominant term</li>
               <li>Ignores constants and lower-order terms</li>
@@ -332,52 +359,52 @@ print(stack.pop())  # Output: 3`}
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Common Time Complexities</h4>
           <div className="space-y-4">
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">O(1) - Constant Time</h5>
-              <p className="text-dark-600 text-sm mb-2">Operations that take the same time regardless of input size.</p>
-              <p className="text-dark-600 text-sm">Examples: Array access, Hash table operations</p>
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">O(1) - Constant Time</h5>
+              <p className="text-black dark:text-white text-sm mb-2">Operations that take the same time regardless of input size.</p>
+              <p className="text-black dark:text-white text-sm">Examples: Array access, Hash table operations</p>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">O(log n) - Logarithmic Time</h5>
-              <p className="text-dark-600 text-sm mb-2">Operations that reduce the problem size by half each time.</p>
-              <p className="text-dark-600 text-sm">Examples: Binary search, Balanced tree operations</p>
+
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">O(log n) - Logarithmic Time</h5>
+              <p className="text-black dark:text-white text-sm mb-2">Operations that reduce the problem size by half each time.</p>
+              <p className="text-black dark:text-white text-sm">Examples: Binary search, Balanced tree operations</p>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">O(n) - Linear Time</h5>
-              <p className="text-dark-600 text-sm mb-2">Operations that process each element once.</p>
-              <p className="text-dark-600 text-sm">Examples: Linear search, Array traversal</p>
+
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">O(n) - Linear Time</h5>
+              <p className="text-black dark:text-white text-sm mb-2">Operations that process each element once.</p>
+              <p className="text-black dark:text-white text-sm">Examples: Linear search, Array traversal</p>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">O(n log n) - Linearithmic Time</h5>
-              <p className="text-dark-600 text-sm mb-2">Common in efficient sorting algorithms.</p>
-              <p className="text-dark-600 text-sm">Examples: Merge sort, Quick sort, Heap sort</p>
+
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">O(n log n) - Linearithmic Time</h5>
+              <p className="text-black dark:text-white text-sm mb-2">Common in efficient sorting algorithms.</p>
+              <p className="text-black dark:text-white text-sm">Examples: Merge sort, Quick sort, Heap sort</p>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">O(n²) - Quadratic Time</h5>
-              <p className="text-dark-600 text-sm mb-2">Operations with nested loops.</p>
-              <p className="text-dark-600 text-sm">Examples: Bubble sort, Selection sort, Nested loops</p>
+
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">O(n²) - Quadratic Time</h5>
+              <p className="text-black dark:text-white text-sm mb-2">Operations with nested loops.</p>
+              <p className="text-black dark:text-white text-sm">Examples: Bubble sort, Selection sort, Nested loops</p>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">O(2ⁿ) - Exponential Time</h5>
-              <p className="text-dark-600 text-sm mb-2">Operations that grow exponentially with input size.</p>
-              <p className="text-dark-600 text-sm">Examples: Recursive Fibonacci, Brute force algorithms</p>
+
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">O(2ⁿ) - Exponential Time</h5>
+              <p className="text-black dark:text-white text-sm mb-2">Operations that grow exponentially with input size.</p>
+              <p className="text-black dark:text-white text-sm">Examples: Recursive Fibonacci, Brute force algorithms</p>
             </div>
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Space Complexity</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Space complexity measures the amount of memory an algorithm uses relative to the input size.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="text-sm text-dark-600 mb-2">Common Space Complexities:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Common Space Complexities:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>O(1) - Constant space (in-place algorithms)</li>
               <li>O(n) - Linear space (arrays, linked lists)</li>
               <li>O(n²) - Quadratic space (2D arrays, adjacency matrices)</li>
@@ -389,19 +416,19 @@ print(stack.pop())  # Output: 3`}
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Big O, Big Omega, and Big Theta</h4>
           <div className="space-y-3">
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">Big O (O) - Upper Bound</h5>
-              <p className="text-dark-600 text-sm">Describes the worst-case scenario. Algorithm will not take more time than this.</p>
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">Big O (O) - Upper Bound</h5>
+              <p className="text-black dark:text-white text-sm">Describes the worst-case scenario. Algorithm will not take more time than this.</p>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">Big Omega (Ω) - Lower Bound</h5>
-              <p className="text-dark-600 text-sm">Describes the best-case scenario. Algorithm will take at least this much time.</p>
+
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">Big Omega (Ω) - Lower Bound</h5>
+              <p className="text-black dark:text-white text-sm">Describes the best-case scenario. Algorithm will take at least this much time.</p>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">Big Theta (Θ) - Tight Bound</h5>
-              <p className="text-dark-600 text-sm">Describes both upper and lower bounds. Algorithm's time complexity is exactly this.</p>
+
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold text-black dark:text-white mb-2">Big Theta (Θ) - Tight Bound</h5>
+              <p className="text-black dark:text-white text-sm">Describes both upper and lower bounds. Algorithm's time complexity is exactly this.</p>
             </div>
           </div>
         </div>
@@ -409,38 +436,51 @@ print(stack.pop())  # Output: 3`}
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Analysis Examples</h4>
           <div className="space-y-4">
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">Example 1: Linear Search</h5>
-              <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def linear_search(arr, target):
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold dark:text-white text-black mb-2">Example 1: Linear Search</h5>
+              <CodePlayground
+                initialCode={`def linear_search(arr, target):
     for i in range(len(arr)):  # O(n)
         if arr[i] == target:   # O(1)
             return i           # O(1)
     return -1                 # O(1)
 
 # Time Complexity: O(n)
-# Space Complexity: O(1)`}
-              </pre>
+# Space Complexity: O(1)
+
+# Test the function
+arr = [64, 34, 25, 12, 22, 11, 90]
+target = 22
+result = linear_search(arr, target)
+print(f"Element {target} found at index: {result}")`}
+                language="python"
+              />
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">Example 2: Nested Loops</h5>
-              <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def print_pairs(arr):
+
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold dark:text-white text-black mb-2">Example 2: Nested Loops</h5>
+              <CodePlayground
+                initialCode={`def print_pairs(arr):
     for i in range(len(arr)):        # O(n)
         for j in range(len(arr)):    # O(n)
             print(arr[i], arr[j])    # O(1)
 
 # Time Complexity: O(n²)
-# Space Complexity: O(1)`}
-              </pre>
+# Space Complexity: O(1)
+
+# Test the function
+arr = [1, 2, 3]
+print("All pairs:")
+print_pairs(arr)`}
+                language="python"
+              />
             </div>
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Tips for Analyzing Complexity</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1">
             <li>Focus on the dominant term (highest power of n)</li>
             <li>Ignore constants and coefficients</li>
             <li>Consider the worst-case scenario</li>
@@ -458,10 +498,10 @@ print(stack.pop())  # Output: 3`}
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 4: Sorting Algorithms</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction to Sorting</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             Sorting is one of the most fundamental operations in computer science. A sorting algorithm rearranges elements in a specific order (ascending or descending). Understanding different sorting algorithms helps in choosing the right one for specific use cases.
           </p>
         </div>
@@ -469,17 +509,17 @@ print(stack.pop())  # Output: 3`}
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Classification of Sorting Algorithms</h4>
           <div className="grid md:grid-cols-2 gap-4">
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">By Time Complexity</h5>
-              <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold dark:text-white text-black mb-2">By Time Complexity</h5>
+              <ul className="list-disc dark:text-white list-inside text-black text-sm space-y-1">
                 <li>O(n²) - Bubble, Selection, Insertion</li>
                 <li>O(n log n) - Merge, Quick, Heap</li>
                 <li>O(n) - Counting, Radix, Bucket</li>
               </ul>
             </div>
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">By Space Complexity</h5>
-              <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+            <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+              <h5 className="font-semibold dark:text-white text-black mb-2">By Space Complexity</h5>
+              <ul className="list-disc dark:text-white list-inside text-black text-sm space-y-1">
                 <li>In-place: O(1) - Bubble, Selection, Insertion</li>
                 <li>Out-of-place: O(n) - Merge, Quick, Heap</li>
               </ul>
@@ -489,48 +529,49 @@ print(stack.pop())  # Output: 3`}
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">1. Bubble Sort</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(n²) worst and average, O(n) best</li>
               <li>Space Complexity: O(1)</li>
               <li>Stable: Yes</li>
               <li>In-place: Yes</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def bubble_sort(arr):
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <CodePlayground
+              initialCode={`def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
         for j in range(0, n-i-1):
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
     return arr`}
-            </pre>
+              language="python"
+            />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">2. Selection Sort</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Divides the array into a sorted and unsorted region, repeatedly selects the smallest element from the unsorted region.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(n²) all cases</li>
               <li>Space Complexity: O(1)</li>
               <li>Stable: No</li>
               <li>In-place: Yes</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def selection_sort(arr):
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <CodePlayground
+              initialCode={`def selection_sort(arr):
     n = len(arr)
     for i in range(n):
         min_idx = i
@@ -539,27 +580,28 @@ print(stack.pop())  # Output: 3`}
                 min_idx = j
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr`}
-            </pre>
+              language="python"
+            />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">3. Insertion Sort</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Builds the final sorted array one item at a time, by repeatedly inserting a new element into the sorted portion of the array.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(n²) worst and average, O(n) best</li>
               <li>Space Complexity: O(1)</li>
               <li>Stable: Yes</li>
               <li>In-place: Yes</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def insertion_sort(arr):
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <CodePlayground
+              initialCode={`def insertion_sort(arr):
     for i in range(1, len(arr)):
         key = arr[i]
         j = i-1
@@ -568,27 +610,28 @@ print(stack.pop())  # Output: 3`}
             j -= 1
         arr[j+1] = key
     return arr`}
-            </pre>
+              language="python"
+            />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">4. Merge Sort</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A divide-and-conquer algorithm that recursively breaks down the array into smaller subarrays until each has only one element, then merges them back together.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(n log n) all cases</li>
               <li>Space Complexity: O(n)</li>
               <li>Stable: Yes</li>
               <li>In-place: No</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def merge_sort(arr):
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <CodePlayground
+              initialCode={`def merge_sort(arr):
     if len(arr) <= 1:
         return arr
     
@@ -610,28 +653,35 @@ def merge(left, right):
             j += 1
     result.extend(left[i:])
     result.extend(right[j:])
-    return result`}
-            </pre>
+    return result
+
+# Test the function
+arr = [64, 34, 25, 12, 22, 11, 90]
+sorted_arr = merge_sort(arr)
+print(f"Original: {arr}")
+print(f"Sorted: {sorted_arr}")`}
+              language="python"
+            />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">5. Quick Sort</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A highly efficient, comparison-based sorting algorithm that uses a divide-and-conquer strategy with a pivot element.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(n log n) average, O(n²) worst</li>
               <li>Space Complexity: O(log n) average</li>
               <li>Stable: No</li>
               <li>In-place: Yes (with optimization)</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def quick_sort(arr):
+          <div className="bg-gray-100 dark:bg-gray-800/80 dark:text-white p-4 rounded-lg">
+            <CodePlayground
+              initialCode={`def quick_sort(arr):
     if len(arr) <= 1:
         return arr
     
@@ -640,19 +690,26 @@ def merge(left, right):
     middle = [x for x in arr if x == pivot]
     right = [x for x in arr if x > pivot]
     
-    return quick_sort(left) + middle + quick_sort(right)`}
-            </pre>
+    return quick_sort(left) + middle + quick_sort(right)
+
+# Test the function
+arr = [64, 34, 25, 12, 22, 11, 90]
+sorted_arr = quick_sort(arr)
+print(f"Original: {arr}")
+print(f"Sorted: {sorted_arr}")`}
+              language="python"
+            />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">6. Heap Sort</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Uses a binary heap data structure to sort elements. It first builds a max heap, then repeatedly extracts the maximum element.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(n log n) all cases</li>
               <li>Space Complexity: O(1)</li>
               <li>Stable: No</li>
@@ -664,65 +721,65 @@ def merge(left, right):
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Comparison Summary</h4>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-gray-100 rounded-lg text-xs lg:text-sm">
+            <table className="min-w-full bg-gray-100 dark:bg-gray-800/80 dark:text-white rounded-lg text-xs lg:text-sm">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-2 lg:p-3 text-dark-600">Algorithm</th>
-                  <th className="text-left p-2 lg:p-3 text-dark-600">Best</th>
-                  <th className="text-left p-2 lg:p-3 text-dark-600">Average</th>
-                  <th className="text-left p-2 lg:p-3 text-dark-600">Worst</th>
-                  <th className="text-left p-2 lg:p-3 text-dark-600">Space</th>
-                  <th className="text-left p-2 lg:p-3 text-dark-600">Stable</th>
+                  <th className="text-left p-2 lg:p-3 text-black dark:text-white">Algorithm</th>
+                  <th className="text-left p-2 lg:p-3 text-black dark:text-white">Best</th>
+                  <th className="text-left p-2 lg:p-3 text-black dark:text-white">Average</th>
+                  <th className="text-left p-2 lg:p-3 text-black dark:text-white">Worst</th>
+                  <th className="text-left p-2 lg:p-3 text-black dark:text-white">Space</th>
+                  <th className="text-left p-2 lg:p-3 text-black dark:text-white">Stable</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b">
-                  <td className="p-2 lg:p-3 text-dark-600">Bubble Sort</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n²)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n²)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(1)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">Yes</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Bubble Sort</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n²)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n²)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(1)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Yes</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-2 lg:p-3 text-dark-600">Selection Sort</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n²)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n²)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n²)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(1)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">No</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Selection Sort</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n²)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n²)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n²)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(1)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">No</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-2 lg:p-3 text-dark-600">Insertion Sort</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n²)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n²)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(1)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">Yes</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Insertion Sort</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n²)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n²)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(1)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Yes</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-2 lg:p-3 text-dark-600">Merge Sort</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">Yes</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Merge Sort</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Yes</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-2 lg:p-3 text-dark-600">Quick Sort</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n²)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">No</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Quick Sort</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n²)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">No</td>
                 </tr>
                 <tr>
-                  <td className="p-2 lg:p-3 text-dark-600">Heap Sort</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(n log n)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">O(1)</td>
-                  <td className="p-2 lg:p-3 text-dark-600">No</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">Heap Sort</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(n log n)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">O(1)</td>
+                  <td className="p-2 lg:p-3 text-black dark:text-white">No</td>
                 </tr>
               </tbody>
             </table>
@@ -731,7 +788,7 @@ def merge(left, right):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">When to Use Which Algorithm?</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1 text-sm lg:text-base">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Small datasets (&lt; 50 elements):</strong> Insertion Sort</li>
             <li><strong>Nearly sorted data:</strong> Insertion Sort</li>
             <li><strong>Large datasets:</strong> Quick Sort, Merge Sort, Heap Sort</li>
@@ -749,31 +806,31 @@ def merge(left, right):
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 5: Searching Algorithms</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction to Searching</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             Searching algorithms are used to find specific elements within a data structure. The efficiency of a search algorithm depends on the data structure being searched and whether the data is sorted or not.
           </p>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">1. Linear Search</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Linear search is the simplest searching algorithm that checks each element in the list sequentially until the target element is found or the end of the list is reached.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(n) worst and average, O(1) best</li>
               <li>Space Complexity: O(1)</li>
               <li>Works on both sorted and unsorted arrays</li>
               <li>Simple to implement</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def linear_search(arr, target):
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg">
+            <CodePlayground
+              initialCode={`def linear_search(arr, target):
     for i in range(len(arr)):
         if arr[i] == target:
             return i  # Return index if found
@@ -783,33 +840,40 @@ def merge(left, right):
 arr = [64, 34, 25, 12, 22, 11, 90]
 target = 22
 result = linear_search(arr, target)
-print(f"Element {target} found at index: {result}")`}
-            </pre>
+print(f"Element {target} found at index: {result}")
+
+# Test with element not in array
+target2 = 100
+result2 = linear_search(arr, target2)
+print(f"Element {target2} found at index: {result2}")`}
+              language="python"
+            />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">2. Binary Search</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Binary search is an efficient algorithm for finding an element in a sorted array. It works by repeatedly dividing the search interval in half.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(log n)</li>
               <li>Space Complexity: O(1) iterative, O(log n) recursive</li>
               <li>Requires sorted array</li>
               <li>Very efficient for large datasets</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <h5 className="font-semibold text-dark-600 mb-2">Iterative Implementation:</h5>
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def binary_search_iterative(arr, target):
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <h5 className="font-semibold text-black dark:text-white mb-2">Iterative Implementation:</h5>
+            <CodePlayground
+              initialCode={`def binary_search_iterative(arr, target):
     left, right = 0, len(arr) - 1
     
     while left <= right:
         mid = (left + right) // 2
+        
         
         if arr[mid] == target:
             return mid
@@ -818,13 +882,22 @@ print(f"Element {target} found at index: {result}")`}
         else:
             right = mid - 1
     
-    return -1`}
-            </pre>
+    return -1
+
+# Example usage
+arr = [11, 12, 22, 25, 34, 64, 90]  # Must be sorted
+target = 22
+result = binary_search_iterative(arr, target)
+print(f"Element {target} found at index: {result}")
+
+# Test with element not in array
+target2 = 100
+result2 = binary_search_iterative(arr, target2)
+print(f"Element {target2} found at index: {result2}")`} defaultLanguage="python" />
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <h5 className="font-semibold text-dark-600 mb-2">Recursive Implementation:</h5>
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def binary_search_recursive(arr, target, left, right):
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg">
+            <h5 className="font-semibold text-black dark:text-white mb-2">Recursive Implementation:</h5>
+            <CodePlayground initialCode={`def binary_search_recursive(arr, target, left, right):
     if left > right:
         return -1
     
@@ -839,120 +912,97 @@ print(f"Element {target} found at index: {result}")`}
 
 # Wrapper function
 def binary_search(arr, target):
-    return binary_search_recursive(arr, target, 0, len(arr) - 1)`}
-            </pre>
+    return binary_search_recursive(arr, target, 0, len(arr) - 1)
+
+# Example usage
+arr = [11, 12, 22, 25, 34, 64, 90]  # Must be sorted
+target = 25
+result = binary_search(arr, target)
+print(f"Element {target} found at index: {result}")`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">3. Jump Search</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Jump search is an algorithm for searching sorted arrays that works by jumping ahead by fixed steps and then performing a linear search in the identified block.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(√n)</li>
               <li>Space Complexity: O(1)</li>
               <li>Requires sorted array</li>
               <li>Better than linear search, worse than binary search</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`import math
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg">
+            <pre className="text-sm text-black dark:text-white overflow-x-auto">
+              <CodePlayground
+              initialCode={`#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
 
-def jump_search(arr, target):
-    n = len(arr)
-    step = math.sqrt(n)
-    prev = 0
-    
-    # Finding the block where element is present
-    while arr[int(min(step, n) - 1)] < target:
-        prev = step
-        step += math.sqrt(n)
-        if prev >= n:
-            return -1
-    
-    # Linear search in the identified block
-    while prev < min(step, n):
-        if arr[int(prev)] == target:
-            return int(prev)
-        prev += 1
-    
-    return -1`}
+int jumpSearch(const vector<int>& arr, int target) {\n    int n = arr.size();\n    int step = sqrt(n);\n    int prev = 0;\n    while (arr[min(step, n)-1] < target) {\n        prev = step;\n        step += sqrt(n);\n        if (prev >= n) return -1;\n    }\n    while (prev < min(step, n)) {\n        if (arr[prev] == target) return prev;\n        prev++;\n    }\n    return -1;\n}\n\nint main() {\n    vector<int> arr = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};\n    int target = 7;\n    int idx = jumpSearch(arr, target);\n    cout << "Element " << target << " found at index: " << idx << endl;\n    return 0;\n}`} 
+              language='cpp'
+            />
             </pre>
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">4. Interpolation Search</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Interpolation search is an improvement over binary search for uniformly distributed sorted arrays. It uses position formula to probe the position of the target.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(log log n) average, O(n) worst</li>
               <li>Space Complexity: O(1)</li>
               <li>Requires sorted and uniformly distributed array</li>
               <li>Most efficient for uniformly distributed data</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def interpolation_search(arr, target):
-    low, high = 0, len(arr) - 1
-    
-    while low <= high and arr[low] <= target <= arr[high]:
-        if low == high:
-            if arr[low] == target:
-                return low
-            return -1
-        
-        # Interpolation formula
-        pos = low + int(((high - low) / (arr[high] - arr[low])) * (target - arr[low]))
-        
-        if arr[pos] == target:
-            return pos
-        elif arr[pos] < target:
-            low = pos + 1
-        else:
-            high = pos - 1
-    
-    return -1`}
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg">
+            <pre className="text-sm text-black dark:text-white overflow-x-auto">
+            <CodePlayground
+              initialCode={`#include <iostream>
+#include <vector>
+using namespace std;
+
+int interpolationSearch(const vector<int>& arr, int target) {\n    int low = 0, high = arr.size() - 1;\n    while (low <= high && target >= arr[low] && target <= arr[high]) {\n        if (low == high) {\n            if (arr[low] == target) return low;\n            return -1;\n        }\n        int pos = low + ((double)(high - low) / (arr[high] - arr[low]) * (target - arr[low]));\n        if (arr[pos] == target) return pos;\n        if (arr[pos] < target) low = pos + 1;\n        else high = pos - 1;\n    }\n    return -1;\n}\n\nint main() {\n    vector<int> arr = {10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47};\n    int target = 18;\n    int idx = interpolationSearch(arr, target);\n    cout << "Element " << target << " found at index: " << idx << endl;\n    return 0;\n}`} 
+              language='cpp'
+            />
             </pre>
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">5. Exponential Search</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Exponential search is useful for unbounded searches where the size of the array is infinite. It works by finding the range where the element is present, then applying binary search.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Time Complexity: O(log n)</li>
               <li>Space Complexity: O(1)</li>
               <li>Works for unbounded searches</li>
               <li>Requires sorted array</li>
             </ul>
           </div>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def exponential_search(arr, target):
-    if arr[0] == target:
-        return 0
-    
-    # Find range for binary search
-    i = 1
-    n = len(arr)
-    while i < n and arr[i] <= target:
-        i = i * 2
-    
-    # Apply binary search in the found range
-    return binary_search_recursive(arr, target, i // 2, min(i, n - 1))`}
+          <div className="bg-gray-100 p-4 dark:bg-gray-800/80 rounded-lg">
+            <pre className="text-sm text-black dark:text-white overflow-x-auto">
+            <CodePlayground
+              initialCode={`#include <iostream>
+#include <vector>
+using namespace std;
+
+int binarySearch(const vector<int>& arr, int left, int right, int target) {\n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (arr[mid] == target) return mid;\n        if (arr[mid] < target) left = mid + 1;\n        else right = mid - 1;\n    }\n    return -1;\n}\n\nint exponentialSearch(const vector<int>& arr, int target) {\n    int n = arr.size();\n    if (arr[0] == target) return 0;\n    int i = 1;\n    while (i < n && arr[i] <= target) i = i * 2;\n    return binarySearch(arr, i / 2, min(i, n - 1), target);\n}\n\nint main() {\n    vector<int> arr = {2, 3, 4, 10, 40, 55, 66, 77, 88, 99};\n    int target = 88;\n    int idx = exponentialSearch(arr, target);\n    cout << "Element " << target << " found at index: " << idx << endl;\n    return 0;\n}`} 
+              language='cpp'
+            />
             </pre>
           </div>
         </div>
@@ -960,57 +1010,57 @@ def jump_search(arr, target):
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Comparison of Searching Algorithms</h4>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-gray-100 rounded-lg">
+            <table className="min-w-full bg-gray-100 dark:bg-gray-800/80 dark:text-white rounded-lg text-xs lg:text-sm">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-3 text-dark-600">Algorithm</th>
-                  <th className="text-left p-3 text-dark-600">Best</th>
-                  <th className="text-left p-3 text-dark-600">Average</th>
-                  <th className="text-left p-3 text-dark-600">Worst</th>
-                  <th className="text-left p-3 text-dark-600">Space</th>
-                  <th className="text-left p-3 text-dark-600">Requirement</th>
+                  <th className="text-left p-3 text-black">Algorithm</th>
+                  <th className="text-left p-3 text-black">Best</th>
+                  <th className="text-left p-3 text-black">Average</th>
+                  <th className="text-left p-3 text-black">Worst</th>
+                  <th className="text-left p-3 text-black">Space</th>
+                  <th className="text-left p-3 text-black">Requirement</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b">
-                  <td className="p-3 text-dark-600">Linear Search</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">None</td>
+                  <td className="p-3 text-black">Linear Search</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">None</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-3 text-dark-600">Binary Search</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">Sorted</td>
+                  <td className="p-3 text-black">Binary Search</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">Sorted</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-3 text-dark-600">Jump Search</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">O(√n)</td>
-                  <td className="p-3 text-dark-600">O(√n)</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">Sorted</td>
+                  <td className="p-3 text-black">Jump Search</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">O(√n)</td>
+                  <td className="p-3 text-black">O(√n)</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">Sorted</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-3 text-dark-600">Interpolation Search</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">O(log log n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">Sorted, Uniform</td>
+                  <td className="p-3 text-black">Interpolation Search</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">O(log log n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">Sorted, Uniform</td>
                 </tr>
                 <tr>
-                  <td className="p-3 text-dark-600">Exponential Search</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">Sorted</td>
+                  <td className="p-3 text-black">Exponential Search</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">Sorted</td>
                 </tr>
               </tbody>
             </table>
@@ -1019,7 +1069,7 @@ def jump_search(arr, target):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">When to Use Which Algorithm?</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Small unsorted arrays:</strong> Linear Search</li>
             <li><strong>Large sorted arrays:</strong> Binary Search</li>
             <li><strong>Uniformly distributed sorted data:</strong> Interpolation Search</li>
@@ -1031,7 +1081,7 @@ def jump_search(arr, target):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Practical Applications</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Database queries:</strong> Finding records efficiently</li>
             <li><strong>File systems:</strong> Locating files in directories</li>
             <li><strong>Web search:</strong> Finding relevant information</li>
@@ -1049,18 +1099,19 @@ def jump_search(arr, target):
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 6: Tree Data Structures</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction to Trees</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             A tree is a hierarchical data structure consisting of nodes connected by edges. Each node contains a value and references to other nodes (children). Trees are fundamental in computer science and are used in many applications.
           </p>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Tree Terminology</h4>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Key Concepts:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li><strong>Node:</strong> Each element in the tree</li>
               <li><strong>Root:</strong> The topmost node of the tree</li>
               <li><strong>Parent:</strong> A node that has children</li>
@@ -1075,12 +1126,12 @@ def jump_search(arr, target):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">1. Binary Tree</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A binary tree is a tree data structure where each node has at most two children, referred to as the left child and right child.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Each node has at most 2 children</li>
               <li>Left and right child distinction</li>
               <li>Can be empty (null tree)</li>
@@ -1088,8 +1139,7 @@ def jump_search(arr, target):
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class Node:
+            <CodePlayground code={`class Node:
     def __init__(self, key):
         self.key = key
         self.left = None
@@ -1115,19 +1165,37 @@ class BinaryTree:
             if node.right is None:
                 node.right = Node(key)
             else:
-                self._insert_recursive(node.right, key)`}
-            </pre>
+                self._insert_recursive(node.right, key)
+    
+    def inorder_traversal(self, node):
+        if node:
+            self.inorder_traversal(node.left)
+            print(node.key, end=" ")
+            self.inorder_traversal(node.right)
+
+# Test the binary tree
+tree = BinaryTree()
+tree.insert(50)
+tree.insert(30)
+tree.insert(70)
+tree.insert(20)
+tree.insert(40)
+tree.insert(60)
+tree.insert(80)
+
+print("Inorder traversal:")
+tree.inorder_traversal(tree.root)`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">2. Binary Search Tree (BST)</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A binary search tree is a binary tree where for each node, all elements in the left subtree are less than the node, and all elements in the right subtree are greater than the node.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Properties:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+            <p className="text-sm text-black dark:text-white mb-2">Properties:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Left subtree contains only nodes with keys &lt; node&apos;s key</li>
               <li>Right subtree contains only nodes with keys &gt; node&apos;s key</li>
               <li>Both left and right subtrees must also be BSTs</li>
@@ -1135,8 +1203,7 @@ class BinaryTree:
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class BST:
+            <CodePlayground code={`class BST:
     def __init__(self):
         self.root = None
     
@@ -1163,19 +1230,45 @@ class BinaryTree:
         elif key > node.key:
             node.right = self._insert_recursive(node.right, key)
         
-        return node`}
-            </pre>
+        return node
+    
+    def inorder_traversal(self, node):
+        if node:
+            self.inorder_traversal(node.left)
+            print(node.key, end=" ")
+            self.inorder_traversal(node.right)
+
+# Test the BST
+bst = BST()
+bst.insert(50)
+bst.insert(30)
+bst.insert(70)
+bst.insert(20)
+bst.insert(40)
+bst.insert(60)
+bst.insert(80)
+
+print("Inorder traversal (should be sorted):")
+bst.inorder_traversal(bst.root)
+print()
+
+# Test search
+result = bst.search(40)
+print(f"Search for 40: {'Found' if result else 'Not found'}")
+
+result2 = bst.search(100)
+print(f"Search for 100: {'Found' if result2 else 'Not found'}")`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">3. AVL Tree</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             An AVL tree is a self-balancing binary search tree where the heights of the left and right subtrees of every node differ by at most one.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Characteristics:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+            <p className="text-sm text-black dark:text-white mb-2">Characteristics:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Height-balanced tree</li>
               <li>Height difference ≤ 1 for all nodes</li>
               <li>Time Complexity: O(log n) for all operations</li>
@@ -1183,8 +1276,8 @@ class BinaryTree:
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class AVLNode:
+            <pre className="text-sm text-black dark:text-white overflow-x-auto">
+              {`class AVLNode:
     def __init__(self, key):
         self.key = key
         self.left = None
@@ -1219,12 +1312,12 @@ class AVLTree:
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">4. B-Tree</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A B-tree is a self-balancing tree data structure that maintains sorted data and allows searches, sequential access, insertions, and deletions in logarithmic time.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Properties:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+            <p className="text-sm text-black dark:text-white mb-2">Properties:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>All leaves are at the same level</li>
               <li>Each node contains multiple keys</li>
               <li>Used in databases and file systems</li>
@@ -1235,12 +1328,12 @@ class AVLTree:
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">5. Heap</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A heap is a specialized tree-based data structure that satisfies the heap property. In a max heap, for any given node, the value of the node is greater than or equal to the values of its children.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
-            <p className="text-sm text-dark-600 mb-2">Types of Heaps:</p>
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+            <p className="text-sm text-black dark:text-white mb-2">Types of Heaps:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li>Max Heap: Parent ≥ Children</li>
               <li>Min Heap: Parent ≤ Children</li>
               <li>Binary Heap: Complete binary tree</li>
@@ -1248,8 +1341,8 @@ class AVLTree:
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class MaxHeap:
+            <pre className="text-sm text-black overflow-x-auto">
+              {`class MaxHeap:
     def __init__(self):
         self.heap = []
     
@@ -1295,42 +1388,42 @@ class AVLTree:
           <h4 className="text-lg font-semibold mb-2">Tree Traversal Algorithms</h4>
           <div className="space-y-4">
             <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">1. Inorder Traversal (Left → Root → Right)</h5>
-              <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def inorder_traversal(node):
+              <h5 className="font-semibold text-black mb-2">1. Inorder Traversal (Left → Root → Right)</h5>
+              <pre className="text-sm text-black overflow-x-auto">
+                {`def inorder_traversal(node):
     if node:
         inorder_traversal(node.left)
         print(node.key, end=" ")
         inorder_traversal(node.right)`}
               </pre>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">2. Preorder Traversal (Root → Left → Right)</h5>
-              <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def preorder_traversal(node):
+              <h5 className="font-semibold text-black mb-2">2. Preorder Traversal (Root → Left → Right)</h5>
+              <pre className="text-sm text-black overflow-x-auto">
+                {`def preorder_traversal(node):
     if node:
         print(node.key, end=" ")
         preorder_traversal(node.left)
         preorder_traversal(node.right)`}
               </pre>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">3. Postorder Traversal (Left → Right → Root)</h5>
-              <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def postorder_traversal(node):
+              <h5 className="font-semibold text-black mb-2">3. Postorder Traversal (Left → Right → Root)</h5>
+              <pre className="text-sm text-black overflow-x-auto">
+                {`def postorder_traversal(node):
     if node:
         postorder_traversal(node.left)
         postorder_traversal(node.right)
         print(node.key, end=" ")`}
               </pre>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
-              <h5 className="font-semibold text-dark-600 mb-2">4. Level Order Traversal (Breadth-First)</h5>
-              <pre className="text-sm text-dark-600 overflow-x-auto">
-{`from collections import deque
+              <h5 className="font-semibold text-black mb-2">4. Level Order Traversal (Breadth-First)</h5>
+              <pre className="text-sm text-black overflow-x-auto">
+                {`from collections import deque
 
 def level_order_traversal(root):
     if not root:
@@ -1353,57 +1446,57 @@ def level_order_traversal(root):
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Comparison of Tree Types</h4>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-gray-100 rounded-lg">
+            <table className="min-w-full bg-gray-100 dark:bg-gray-800/80 dark:text-white rounded-lg text-xs lg:text-sm">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-3 text-dark-600">Tree Type</th>
-                  <th className="text-left p-3 text-dark-600">Search</th>
-                  <th className="text-left p-3 text-dark-600">Insert</th>
-                  <th className="text-left p-3 text-dark-600">Delete</th>
-                  <th className="text-left p-3 text-dark-600">Space</th>
-                  <th className="text-left p-3 text-dark-600">Use Case</th>
+                  <th className="text-left p-3 text-black">Tree Type</th>
+                  <th className="text-left p-3 text-black">Search</th>
+                  <th className="text-left p-3 text-black">Insert</th>
+                  <th className="text-left p-3 text-black">Delete</th>
+                  <th className="text-left p-3 text-black">Space</th>
+                  <th className="text-left p-3 text-black">Use Case</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b">
-                  <td className="p-3 text-dark-600">Binary Tree</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">General purpose</td>
+                  <td className="p-3 text-black">Binary Tree</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">General purpose</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-3 text-dark-600">BST</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">Ordered data</td>
+                  <td className="p-3 text-black">BST</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">Ordered data</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-3 text-dark-600">AVL Tree</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">Balanced operations</td>
+                  <td className="p-3 text-black">AVL Tree</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">Balanced operations</td>
                 </tr>
                 <tr className="border-b">
-                  <td className="p-3 text-dark-600">B-Tree</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">Database systems</td>
+                  <td className="p-3 text-black">B-Tree</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">Database systems</td>
                 </tr>
                 <tr>
-                  <td className="p-3 text-dark-600">Heap</td>
-                  <td className="p-3 text-dark-600">O(1)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(log n)</td>
-                  <td className="p-3 text-dark-600">O(n)</td>
-                  <td className="p-3 text-dark-600">Priority queues</td>
+                  <td className="p-3 text-black">Heap</td>
+                  <td className="p-3 text-black">O(1)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(log n)</td>
+                  <td className="p-3 text-black">O(n)</td>
+                  <td className="p-3 text-black">Priority queues</td>
                 </tr>
               </tbody>
             </table>
@@ -1412,7 +1505,7 @@ def level_order_traversal(root):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Applications of Trees</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>File systems:</strong> Directory structures</li>
             <li><strong>Database indexing:</strong> B-trees for efficient queries</li>
             <li><strong>Priority queues:</strong> Heaps for scheduling</li>
@@ -1431,18 +1524,19 @@ def level_order_traversal(root):
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 7: Graph Data Structures & Algorithms</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction to Graphs</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             A graph is a non-linear data structure consisting of vertices (nodes) and edges that connect these vertices. Graphs are used to represent relationships between objects and are fundamental in computer science.
           </p>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Graph Terminology</h4>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
+          <div className="bg-gray-100 p-4 rounded-lg mb-3">
+            <p className="text-sm text-black dark:text-white mb-2">Key Concepts:</p>
+            <ul className="list-disc list-inside text-black dark:text-white text-sm space-y-1">
               <li><strong>Vertex (Node):</strong> A point in the graph</li>
               <li><strong>Edge:</strong> A connection between two vertices</li>
               <li><strong>Directed Graph:</strong> Edges have direction</li>
@@ -1458,11 +1552,12 @@ def level_order_traversal(root):
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Graph Representations</h4>
           <div className="space-y-4">
-            <div className="bg-gray-100 p-4 rounded-lg">
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
+              <h5 className="font-semibold text-black mb-2">1. Adjacency Matrix</h5>
               <h5 className="font-semibold text-dark-600 mb-2">1. Adjacency Matrix</h5>
               <p className="text-dark-600 text-sm mb-2">A 2D array where matrix[i][j] indicates if there's an edge from vertex i to vertex j.</p>
               <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class Graph:
+                {`class Graph:
     def __init__(self, vertices):
         self.vertices = vertices
         self.matrix = [[0] * vertices for _ in range(vertices)]
@@ -1480,12 +1575,12 @@ def level_order_traversal(root):
         return self.matrix[u][v] != 0`}
               </pre>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
+
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
               <h5 className="font-semibold text-dark-600 mb-2">2. Adjacency List</h5>
               <p className="text-dark-600 text-sm mb-2">An array of lists where each list represents the neighbors of a vertex.</p>
               <pre className="text-sm text-dark-600 overflow-x-auto">
-{`from collections import defaultdict
+                {`from collections import defaultdict
 
 class Graph:
     def __init__(self):
@@ -1509,11 +1604,10 @@ class Graph:
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Graph Traversal Algorithms</h4>
           <div className="space-y-4">
-            <div className="bg-gray-100 p-4 rounded-lg">
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
               <h5 className="font-semibold text-dark-600 mb-2">1. Depth-First Search (DFS)</h5>
               <p className="text-dark-600 text-sm mb-2">Explores as far as possible along each branch before backtracking.</p>
-              <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def dfs_recursive(graph, start, visited=None):
+              <CodePlayground code={`def dfs_recursive(graph, start, visited=None):
     if visited is None:
         visited = set()
     
@@ -1537,15 +1631,13 @@ def dfs_iterative(graph, start):
             # Add unvisited neighbors to stack
             for neighbor in reversed(graph[vertex]):
                 if neighbor not in visited:
-                    stack.append(neighbor)`}
-              </pre>
+                    stack.append(neighbor)`} defaultLanguage="python" />
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
+
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
               <h5 className="font-semibold text-dark-600 mb-2">2. Breadth-First Search (BFS)</h5>
               <p className="text-dark-600 text-sm mb-2">Explores all neighbors at the present depth before moving to nodes at the next depth level.</p>
-              <pre className="text-sm text-dark-600 overflow-x-auto">
-{`from collections import deque
+              <CodePlayground code={`from collections import deque
 
 def bfs(graph, start):
     visited = set()
@@ -1559,8 +1651,7 @@ def bfs(graph, start):
         for neighbor in graph[vertex]:
             if neighbor not in visited:
                 visited.add(neighbor)
-                queue.append(neighbor)`}
-              </pre>
+                queue.append(neighbor)`} defaultLanguage="python" />
             </div>
           </div>
         </div>
@@ -1568,11 +1659,11 @@ def bfs(graph, start):
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Shortest Path Algorithms</h4>
           <div className="space-y-4">
-            <div className="bg-gray-100 p-4 rounded-lg">
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
               <h5 className="font-semibold text-dark-600 mb-2">1. Dijkstra's Algorithm</h5>
               <p className="text-dark-600 text-sm mb-2">Finds the shortest path from a source vertex to all other vertices in a weighted graph.</p>
               <pre className="text-sm text-dark-600 overflow-x-auto">
-{`import heapq
+                {`import heapq
 
 def dijkstra(graph, start):
     distances = {vertex: float('infinity') for vertex in graph}
@@ -1595,12 +1686,12 @@ def dijkstra(graph, start):
     return distances`}
               </pre>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
+
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
               <h5 className="font-semibold text-dark-600 mb-2">2. Bellman-Ford Algorithm</h5>
               <p className="text-dark-600 text-sm mb-2">Finds shortest paths from a source vertex to all other vertices, can handle negative weights.</p>
               <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def bellman_ford(graph, start, V):
+                {`def bellman_ford(graph, start, V):
     distances = [float('infinity')] * V
     distances[start] = 0
     
@@ -1619,12 +1710,12 @@ def dijkstra(graph, start):
     return distances`}
               </pre>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
+
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
               <h5 className="font-semibold text-dark-600 mb-2">3. Floyd-Warshall Algorithm</h5>
               <p className="text-dark-600 text-sm mb-2">Finds shortest paths between all pairs of vertices in a weighted graph.</p>
               <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def floyd_warshall(graph, V):
+                {`def floyd_warshall(graph, V):
     dist = [[float('infinity')] * V for _ in range(V)]
     
     # Initialize distances
@@ -1649,11 +1740,11 @@ def dijkstra(graph, start):
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Minimum Spanning Tree Algorithms</h4>
           <div className="space-y-4">
-            <div className="bg-gray-100 p-4 rounded-lg">
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
               <h5 className="font-semibold text-dark-600 mb-2">1. Kruskal's Algorithm</h5>
               <p className="text-dark-600 text-sm mb-2">Finds a minimum spanning tree by sorting edges and adding them if they don't form a cycle.</p>
               <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class UnionFind:
+                {`class UnionFind:
     def __init__(self, n):
         self.parent = list(range(n))
         self.rank = [0] * n
@@ -1689,12 +1780,12 @@ def kruskal(edges, V):
     return mst`}
               </pre>
             </div>
-            
-            <div className="bg-gray-100 p-4 rounded-lg">
+
+            <div className="bg-gray-100 p-4 rounded-lg mb-3">
               <h5 className="font-semibold text-dark-600 mb-2">2. Prim's Algorithm</h5>
               <p className="text-dark-600 text-sm mb-2">Finds a minimum spanning tree by growing the tree one vertex at a time.</p>
               <pre className="text-sm text-dark-600 overflow-x-auto">
-{`import heapq
+                {`import heapq
 
 def prim(graph, start, V):
     visited = [False] * V
@@ -1723,12 +1814,12 @@ def prim(graph, start, V):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Topological Sorting</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Topological sorting is a linear ordering of vertices in a directed acyclic graph (DAG) such that for every directed edge (u, v), vertex u comes before vertex v.
           </p>
-          <div className="bg-gray-100 p-4 rounded-lg">
+          <div className="bg-gray-100 p-4 rounded-lg mb-3">
             <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def topological_sort(graph):
+              {`def topological_sort(graph):
     def dfs(vertex):
         visited.add(vertex)
         for neighbor in graph[vertex]:
@@ -1751,7 +1842,7 @@ def prim(graph, start, V):
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Comparison of Graph Algorithms</h4>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-gray-100 rounded-lg">
+            <table className="min-w-full bg-gray-100 dark:bg-gray-800/80 dark:text-white rounded-lg text-xs lg:text-sm">
               <thead>
                 <tr className="border-b">
                   <th className="text-left p-3 text-dark-600">Algorithm</th>
@@ -1810,7 +1901,7 @@ def prim(graph, start, V):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Applications of Graphs</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Social networks:</strong> Friend connections and recommendations</li>
             <li><strong>Navigation systems:</strong> Finding shortest routes</li>
             <li><strong>Computer networks:</strong> Network topology and routing</li>
@@ -1830,17 +1921,17 @@ def prim(graph, start, V):
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 8: Advanced Data Structures</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction to Advanced Data Structures</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             Advanced data structures are specialized structures designed for specific use cases and problems. They often provide efficient solutions for complex operations that basic data structures cannot handle efficiently.
           </p>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">1. Trie (Prefix Tree)</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A trie is a tree-like data structure used to store and retrieve strings. It's particularly efficient for prefix-based operations and autocomplete functionality.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -1853,8 +1944,7 @@ def prim(graph, start, V):
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class TrieNode:
+            <CodePlayground code={`class TrieNode:
     def __init__(self):
         self.children = {}
         self.is_end_of_word = False
@@ -1885,14 +1975,27 @@ class Trie:
             if char not in node.children:
                 return False
             node = node.children[char]
-        return True`}
-            </pre>
+        return True
+
+# Test the Trie
+trie = Trie()
+words = ["apple", "app", "application", "banana", "ball"]
+for word in words:
+    trie.insert(word)
+
+print("Testing Trie operations:")
+print(f"Search 'apple': {trie.search('apple')}")
+print(f"Search 'app': {trie.search('app')}")
+print(f"Search 'orange': {trie.search('orange')}")
+print(f"Starts with 'app': {trie.starts_with('app')}")
+print(f"Starts with 'ban': {trie.starts_with('ban')}")
+print(f"Starts with 'cat': {trie.starts_with('cat')}")`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">2. Segment Tree</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A segment tree is a tree data structure used for storing information about intervals or segments. It allows querying which of the stored segments contain a given point.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -1905,8 +2008,7 @@ class Trie:
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class SegmentTree:
+            <CodePlayground code={`class SegmentTree:
     def __init__(self, arr):
         self.n = len(arr)
         self.tree = [0] * (4 * self.n)
@@ -1941,14 +2043,26 @@ class Trie:
                 self.update(2 * node + 1, start, mid, idx, val)
             else:
                 self.update(2 * node + 2, mid + 1, end, idx, val)
-            self.tree[node] = self.tree[2 * node + 1] + self.tree[2 * node + 2]`}
-            </pre>
+            self.tree[node] = self.tree[2 * node + 1] + self.tree[2 * node + 2]
+
+# Test Segment Tree
+arr = [1, 3, 5, 7, 9, 11]
+st = SegmentTree(arr)
+
+print("Original array:", arr)
+print("Sum of range [1, 3]:", st.query(0, 0, len(arr)-1, 1, 3))
+print("Sum of range [0, 4]:", st.query(0, 0, len(arr)-1, 0, 4))
+
+# Update element at index 2
+st.update(0, 0, len(arr)-1, 2, 10)
+print("After updating index 2 to 10:")
+print("Sum of range [1, 3]:", st.query(0, 0, len(arr)-1, 1, 3))`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">3. Fenwick Tree (Binary Indexed Tree)</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A Fenwick tree is a data structure that can efficiently update elements and calculate prefix sums in a table of numbers.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -1962,7 +2076,7 @@ class Trie:
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
             <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class FenwickTree:
+              {`class FenwickTree:
     def __init__(self, n):
         self.n = n
         self.tree = [0] * (n + 1)
@@ -1994,7 +2108,7 @@ print(ft.range_query(2, 4))  # Sum of elements from index 2 to 4`}
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">4. Disjoint Set Union (DSU)</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             DSU is a data structure that tracks a set of elements partitioned into a number of disjoint (non-overlapping) subsets.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2008,7 +2122,7 @@ print(ft.range_query(2, 4))  # Sum of elements from index 2 to 4`}
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
             <pre className="text-sm text-dark-600 overflow-x-auto">
-{`class DSU:
+              {`class DSU:
     def __init__(self, n):
         self.parent = list(range(n))
         self.rank = [0] * n
@@ -2053,7 +2167,7 @@ def kruskal(edges, n):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">5. Sparse Table</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A sparse table is a data structure that allows answering range queries on static arrays in O(1) time after O(n log n) preprocessing.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2067,7 +2181,7 @@ def kruskal(edges, n):
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
             <pre className="text-sm text-dark-600 overflow-x-auto">
-{`import math
+              {`import math
 
 class SparseTable:
     def __init__(self, arr):
@@ -2100,7 +2214,7 @@ print(st.query(4, 7))  # Minimum in range [4, 7]`}
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">6. Suffix Array</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             A suffix array is a sorted array of all suffixes of a string. It's used for efficient string matching and pattern searching.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2114,7 +2228,7 @@ print(st.query(4, 7))  # Minimum in range [4, 7]`}
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
             <pre className="text-sm text-dark-600 overflow-x-auto">
-{`def build_suffix_array(s):
+              {`def build_suffix_array(s):
     n = len(s)
     suffixes = []
     
@@ -2160,7 +2274,7 @@ print("Pattern 'ana' found at:", search_pattern(text, "ana", suffix_array))`}
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Comparison of Advanced Data Structures</h4>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-gray-100 rounded-lg">
+            <table className="min-w-full bg-gray-100 dark:bg-gray-800/80 dark:text-white rounded-lg text-xs lg:text-sm">
               <thead>
                 <tr className="border-b">
                   <th className="text-left p-3 text-dark-600">Data Structure</th>
@@ -2220,7 +2334,7 @@ print("Pattern 'ana' found at:", search_pattern(text, "ana", suffix_array))`}
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">When to Use Which Data Structure?</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>String operations and autocomplete:</strong> Trie</li>
             <li><strong>Range queries with updates:</strong> Segment Tree</li>
             <li><strong>Prefix sums and point updates:</strong> Fenwick Tree</li>
@@ -2233,7 +2347,7 @@ print("Pattern 'ana' found at:", search_pattern(text, "ana", suffix_array))`}
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Real-World Applications</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Search engines:</strong> Tries for autocomplete</li>
             <li><strong>Database systems:</strong> Segment trees for range queries</li>
             <li><strong>Network routing:</strong> DSU for connected components</li>
@@ -2252,17 +2366,17 @@ print("Pattern 'ana' found at:", search_pattern(text, "ana", suffix_array))`}
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 9: Problem Solving Techniques</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Introduction to Algorithmic Paradigms</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             Algorithmic paradigms are general approaches to solving computational problems. Understanding these paradigms helps in choosing the right strategy for a given problem and developing efficient solutions.
           </p>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">1. Brute Force</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Brute force is the simplest approach where we try all possible solutions to find the correct one. It's often used when the problem size is small or as a baseline for comparison.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2275,8 +2389,7 @@ print("Pattern 'ana' found at:", search_pattern(text, "ana", suffix_array))`}
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`# Example: Finding all pairs that sum to target
+            <CodePlayground code={`# Example: Finding all pairs that sum to target
 def find_pairs_brute_force(arr, target):
     pairs = []
     n = len(arr)
@@ -2301,14 +2414,25 @@ def subset_sum_brute_force(arr, target):
         if subset_sum == target:
             return True
     
-    return False`}
-            </pre>
+    return False
+
+# Test the functions
+arr = [1, 2, 3, 4, 5]
+target = 7
+
+print("Finding pairs that sum to", target)
+pairs = find_pairs_brute_force(arr, target)
+print("Pairs found:", pairs)
+
+print("\nChecking if any subset sums to", target)
+result = subset_sum_brute_force(arr, target)
+print("Subset found:", result)`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">2. Backtracking</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Backtracking is a systematic way to iterate through all possible configurations of a search space. It builds solutions incrementally and abandons partial solutions that cannot lead to a valid solution.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2321,8 +2445,7 @@ def subset_sum_brute_force(arr, target):
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`# N-Queens Problem
+            <CodePlayground code={`# N-Queens Problem (simplified for 4x4 board)
 def solve_n_queens(n):
     def is_safe(board, row, col):
         # Check row
@@ -2362,33 +2485,36 @@ def solve_n_queens(n):
         return board
     return None
 
-# Sudoku Solver
-def solve_sudoku(board):
+# Test N-Queens
+n = 4
+solution = solve_n_queens(n)
+if solution:
+    print(f"Solution for {n}-Queens:")
+    for row in solution:
+        print(' '.join(row))
+else:
+    print("No solution found")
+
+# Simple Sudoku Solver (3x3 grid)
+def solve_sudoku_simple(board):
     def is_valid(board, row, col, num):
         # Check row
-        for x in range(9):
+        for x in range(3):
             if board[row][x] == num:
                 return False
         
         # Check column
-        for x in range(9):
+        for x in range(3):
             if board[x][col] == num:
                 return False
-        
-        # Check 3x3 box
-        start_row, start_col = 3 * (row // 3), 3 * (col // 3)
-        for i in range(3):
-            for j in range(3):
-                if board[i + start_row][j + start_col] == num:
-                    return False
         
         return True
     
     def solve():
-        for row in range(9):
-            for col in range(9):
+        for row in range(3):
+            for col in range(3):
                 if board[row][col] == '.':
-                    for num in '123456789':
+                    for num in '123':
                         if is_valid(board, row, col, num):
                             board[row][col] = num
                             if solve():
@@ -2398,14 +2524,30 @@ def solve_sudoku(board):
         return True
     
     solve()
-    return board`}
-            </pre>
+    return board
+
+# Test Sudoku
+sudoku_board = [
+    ['1', '.', '3'],
+    ['.', '2', '.'],
+    ['.', '.', '1']
+]
+
+print("\nSudoku before solving:")
+for row in sudoku_board:
+    print(' '.join(row))
+
+solve_sudoku_simple(sudoku_board)
+
+print("Sudoku after solving:")
+for row in sudoku_board:
+    print(' '.join(row))`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">3. Greedy Algorithms</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Greedy algorithms make locally optimal choices at each step with the hope of finding a global optimum. They are simple and often efficient but don't always guarantee the optimal solution.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2418,8 +2560,7 @@ def solve_sudoku(board):
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`# Activity Selection Problem
+            <CodePlayground code={`# Activity Selection Problem
 def activity_selection(start, finish):
     n = len(start)
     selected = [0]  # First activity is always selected
@@ -2451,41 +2592,49 @@ def fractional_knapsack(values, weights, capacity):
     
     return total_value
 
-# Huffman Coding
-import heapq
+# Test Activity Selection
+start_times = [1, 3, 0, 5, 8, 5]
+finish_times = [2, 4, 6, 7, 9, 9]
 
-class HuffmanNode:
-    def __init__(self, char, freq):
-        self.char = char
-        self.freq = freq
-        self.left = None
-        self.right = None
-    
-    def __lt__(self, other):
-        return self.freq < other.freq
+selected_activities = activity_selection(start_times, finish_times)
+print("Selected activities:", selected_activities)
+print("Number of activities:", len(selected_activities))
 
-def build_huffman_tree(characters, frequencies):
-    heap = [HuffmanNode(char, freq) for char, freq in zip(characters, frequencies)]
-    heapq.heapify(heap)
+# Test Fractional Knapsack
+values = [60, 100, 120]
+weights = [10, 20, 30]
+capacity = 50
+
+max_value = fractional_knapsack(values, weights, capacity)
+print(f"\nMaximum value for knapsack capacity {capacity}: {max_value}")
+
+# Simple Huffman-like encoding
+def simple_encoding(characters, frequencies):
+    # Sort by frequency (descending)
+    char_freq = list(zip(characters, frequencies))
+    char_freq.sort(key=lambda x: x[1], reverse=True)
     
-    while len(heap) > 1:
-        left = heapq.heappop(heap)
-        right = heapq.heappop(heap)
-        
-        internal = HuffmanNode(None, left.freq + right.freq)
-        internal.left = left
-        internal.right = right
-        
-        heapq.heappush(heap, internal)
+    # Simple encoding: most frequent gets shortest code
+    encoding = {}
+    for i, (char, freq) in enumerate(char_freq):
+        encoding[char] = '0' * (i + 1)
     
-    return heap[0]`}
-            </pre>
+    return encoding
+
+# Test encoding
+chars = ['a', 'b', 'c', 'd']
+freqs = [4, 2, 1, 1]
+
+encoding = simple_encoding(chars, freqs)
+print("\nSimple encoding:")
+for char, code in encoding.items():
+    print(f"{char}: {code}")`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">4. Divide and Conquer</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Divide and conquer breaks down a problem into smaller subproblems, solves them recursively, and combines the solutions to solve the original problem.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2498,7 +2647,7 @@ def build_huffman_tree(characters, frequencies):
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
             <pre className="text-sm text-dark-600 overflow-x-auto">
-{`# Merge Sort
+              {`# Merge Sort
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -2602,7 +2751,7 @@ def min_distance_brute_force(points):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">5. Dynamic Programming</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             Dynamic programming solves complex problems by breaking them down into simpler subproblems and storing the results to avoid redundant calculations.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2615,8 +2764,7 @@ def min_distance_brute_force(points):
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`# Fibonacci with Memoization
+            <CodePlayground code={`# Fibonacci with Memoization
 def fibonacci_memo(n, memo={}):
     if n in memo:
         return memo[n]
@@ -2683,14 +2831,43 @@ def coin_change(coins, amount):
         for i in range(coin, amount + 1):
             dp[i] = min(dp[i], dp[i - coin] + 1)
     
-    return dp[amount] if dp[amount] != float('inf') else -1`}
-            </pre>
+    return dp[amount] if dp[amount] != float('inf') else -1
+
+# Test the algorithms
+print("Fibonacci (memoized):")
+for i in range(10):
+    print(f"F({i}) = {fibonacci_memo(i)}")
+
+print("\nLongest Common Subsequence:")
+text1 = "ABCDGH"
+text2 = "AEDFHR"
+lcs_result = lcs(text1, text2)
+print(f"LCS of '{text1}' and '{text2}': {lcs_result}")
+
+print("\n0/1 Knapsack:")
+values = [60, 100, 120]
+weights = [10, 20, 30]
+capacity = 50
+knapsack_result = knapsack_01(values, weights, capacity)
+print(f"Maximum value: {knapsack_result}")
+
+print("\nEdit Distance:")
+word1 = "horse"
+word2 = "ros"
+edit_result = edit_distance(word1, word2)
+print(f"Edit distance between '{word1}' and '{word2}': {edit_result}")
+
+print("\nCoin Change:")
+coins = [1, 2, 5]
+amount = 11
+coin_result = coin_change(coins, amount)
+print(f"Minimum coins needed for {amount}: {coin_result}")`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">6. Two Pointer Technique</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             The two pointer technique uses two pointers to traverse data structures, often arrays or linked lists, to solve problems efficiently.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2703,8 +2880,7 @@ def coin_change(coins, amount):
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`# Two Sum in Sorted Array
+            <CodePlayground code={`# Two Sum in Sorted Array
 def two_sum_sorted(arr, target):
     left, right = 0, len(arr) - 1
     
@@ -2765,14 +2941,36 @@ def is_palindrome(s):
         left += 1
         right -= 1
     
-    return True`}
-            </pre>
+    return True
+
+# Test the algorithms
+print("Two Sum in Sorted Array:")
+arr = [2, 7, 11, 15]
+target = 9
+result = two_sum_sorted(arr, target)
+print(f"Indices for sum {target}: {result}")
+
+print("\nRemove Duplicates:")
+arr_with_duplicates = [1, 1, 2, 2, 3, 4, 4, 5]
+new_length = remove_duplicates(arr_with_duplicates)
+print(f"Array after removing duplicates: {arr_with_duplicates[:new_length]}")
+
+print("\nContainer With Most Water:")
+heights = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+max_water = max_area(heights)
+print(f"Maximum water that can be contained: {max_water}")
+
+print("\nValid Palindrome:")
+test_strings = ["A man, a plan, a canal: Panama", "race a car", "hello"]
+for s in test_strings:
+    result = is_palindrome(s)
+    print(f"'{s}' is palindrome: {result}")`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">7. Sliding Window</h4>
-          <p className="text-white-700 mb-2">
+          <p className="text-black dark:text-white mb-2 text-sm lg:text-base">
             The sliding window technique maintains a subset of elements that satisfies certain conditions by expanding and contracting the window.
           </p>
           <div className="bg-gray-100 p-4 rounded-lg mb-3">
@@ -2784,8 +2982,7 @@ def is_palindrome(s):
             </ul>
           </div>
           <div className="bg-gray-100 p-4 rounded-lg">
-            <pre className="text-sm text-dark-600 overflow-x-auto">
-{`# Maximum Sum Subarray of Size K
+            <CodePlayground code={`# Maximum Sum Subarray of Size K
 def max_sum_subarray(arr, k):
     if len(arr) < k:
         return -1
@@ -2813,8 +3010,8 @@ def length_of_longest_substring(s):
     
     return max_length
 
-# Minimum Window Substring
-def min_window(s, t):
+# Minimum Window Substring (simplified)
+def min_window_simple(s, t):
     if not t or not s:
         return ""
     
@@ -2847,15 +3044,33 @@ def min_window(s, t):
             
             left += 1
     
-    return s[min_start:min_start + min_len] if min_len != float('inf') else ""`}
-            </pre>
+    return s[min_start:min_start + min_len] if min_len != float('inf') else ""
+
+# Test the algorithms
+print("Maximum Sum Subarray of Size K:")
+arr = [1, 4, 2, 10, 2, 3, 1, 0, 20]
+k = 4
+max_sum = max_sum_subarray(arr, k)
+print(f"Maximum sum of subarray of size {k}: {max_sum}")
+
+print("\nLongest Substring Without Repeating Characters:")
+test_strings = ["abcabcbb", "bbbbb", "pwwkew"]
+for s in test_strings:
+    length = length_of_longest_substring(s)
+    print(f"Length for '{s}': {length}")
+
+print("\nMinimum Window Substring:")
+s = "ADOBECODEBANC"
+t = "ABC"
+min_window = min_window_simple(s, t)
+print(f"Minimum window containing '{t}' in '{s}': '{min_window}'")`} defaultLanguage="python" />
           </div>
         </div>
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Comparison of Problem Solving Techniques</h4>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-gray-100 rounded-lg">
+            <table className="min-w-full bg-gray-100 dark:bg-gray-800/80 dark:text-white rounded-lg text-xs lg:text-sm">
               <thead>
                 <tr className="border-b">
                   <th className="text-left p-3 text-dark-600">Technique</th>
@@ -2914,7 +3129,7 @@ def min_window(s, t):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Problem-Solving Strategy</h4>
-          <ol className="list-decimal list-inside text-white-700 space-y-2">
+          <ol className="list-decimal list-inside text-black dark:text-white space-y-2 text-sm lg:text-base">
             <li><strong>Understand the problem:</strong> Read carefully, identify inputs, outputs, and constraints</li>
             <li><strong>Identify the pattern:</strong> Look for common algorithmic paradigms</li>
             <li><strong>Design the algorithm:</strong> Choose the appropriate technique</li>
@@ -2927,7 +3142,7 @@ def min_window(s, t):
 
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">Common Problem Patterns</h4>
-          <ul className="list-disc list-inside text-white-700 space-y-1">
+          <ul className="list-disc list-inside text-black dark:text-white space-y-1 text-sm lg:text-base">
             <li><strong>Array problems:</strong> Two pointers, sliding window, prefix sums</li>
             <li><strong>String problems:</strong> Two pointers, dynamic programming, trie</li>
             <li><strong>Tree problems:</strong> DFS, BFS, recursion, dynamic programming</li>
@@ -2945,10 +3160,10 @@ def min_window(s, t):
     content: (
       <>
         <h3 className="text-xl font-medium mb-4">Step 10: Practice, Practice, Practice!</h3>
-        
+
         <div className="mb-6">
           <h4 className="text-lg font-semibold mb-2">The Importance of Practice</h4>
-          <p className="text-white-700 mb-4">
+          <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
             Consistent practice is the key to mastering data structures and algorithms. Regular problem-solving helps reinforce concepts, improve pattern recognition, and develop intuition for choosing the right approach.
           </p>
         </div>
@@ -2967,7 +3182,7 @@ def min_window(s, t):
                 <li>Progress tracking and streak maintenance</li>
               </ul>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
               <h5 className="font-semibold text-dark-600 mb-2">2. HackerRank</h5>
               <p className="text-dark-600 text-sm mb-2">Great for beginners with structured learning paths.</p>
@@ -2978,7 +3193,7 @@ def min_window(s, t):
                 <li>Company coding challenges</li>
               </ul>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
               <h5 className="font-semibold text-dark-600 mb-2">3. Codeforces</h5>
               <p className="text-dark-600 text-sm mb-2">Advanced platform for competitive programming.</p>
@@ -3005,7 +3220,7 @@ def min_window(s, t):
                 <li>Simple data structure operations</li>
               </ul>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
               <h5 className="font-semibold text-dark-600 mb-2">Intermediate (Medium)</h5>
               <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
@@ -3017,7 +3232,7 @@ def min_window(s, t):
                 <li>Binary search variations</li>
               </ul>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
               <h5 className="font-semibold text-dark-600 mb-2">Advanced (Hard)</h5>
               <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
@@ -3044,7 +3259,7 @@ def min_window(s, t):
                 <li><strong>Review (15 minutes):</strong> Analyze solutions and learn</li>
               </ol>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
               <h5 className="font-semibold text-dark-600 mb-2">Weekly Goals</h5>
               <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
@@ -3071,7 +3286,7 @@ def min_window(s, t):
                 <li>"Grokking Algorithms" by Aditya Bhargava</li>
               </ul>
             </div>
-            
+
             <div className="bg-gray-100 p-4 rounded-lg">
               <h5 className="font-semibold text-dark-600 mb-2">Online Courses</h5>
               <ul className="list-disc list-inside text-dark-600 text-sm space-y-1">
@@ -3105,19 +3320,75 @@ def min_window(s, t):
     content: (
       <>
         <h2 className="text-2xl font-semibold mb-4">DSA Blog</h2>
-        <p className="text-white-700">
+        <p className="text-black dark:text-white">
           Welcome to the DSA blog! Here you will find articles, tutorials, and insights into various Data Structures and Algorithms.
           Stay tuned for more updates and detailed explanations.
         </p>
         {/* You can add more blog posts here */}
         <div className="mt-6 p-4 border rounded-lg shadow-sm">
           <h3 className="text-xl font-medium mb-2">Upcoming Article: Deep Dive into Dynamic Programming</h3>
-          <p className="text-white-600 text-sm">
+          <p className="text-dark-600 text-sm">
             Date: July 26, 2025
           </p>
-          <p className="text-white-700 mt-2">
+          <p className="text-black dark:text-white mt-2">
             This article will cover the core concepts of Dynamic Programming, common patterns, and examples to help you master this powerful technique.
           </p>
+        </div>
+      </>
+    ),
+  },
+  {
+    id: 'interactive-coding-challenge',
+    name: 'Interactive Coding Challenge',
+    content: (
+      <>
+        <h4 className="text-lg font-semibold mb-2">Interactive Coding Challenge</h4>
+        <p className="text-black dark:text-white mb-4 text-sm lg:text-base">
+          Try solving this coding challenge to practice your DSA skills! This is a simple problem that combines multiple concepts.
+        </p>
+        <div className="bg-gray-100 p-4 rounded-lg">
+          <div className="mb-4">
+            <h5 className="font-semibold text-dark-600 mb-2">Problem: Find the Missing Number</h5>
+            <p className="text-dark-600 text-sm mb-2">
+              Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+            </p>
+            <p className="text-dark-600 text-sm mb-2">
+              <strong>Example:</strong> Input: [3, 0, 1] → Output: 2<br />
+              <strong>Example:</strong> Input: [9, 6, 4, 2, 3, 5, 7, 0, 1] → Output: 8
+            </p>
+          </div>
+          <CodePlayground initialCode=
+{`#include <iostream>
+#include <vector>
+using namespace std;
+
+int find_missing_number(const vector<int>& nums) {
+    int n = nums.size();
+    int expected_sum = n * (n + 1) / 2;
+    int actual_sum = 0;
+    for (int num : nums) actual_sum += num;
+    return expected_sum - actual_sum;
+}
+
+int main() {
+    vector<vector<int>> test_cases = {
+        {3, 0, 1},
+        {9, 6, 4, 2, 3, 5, 7, 0, 1},
+        {0, 1},
+        {1}
+    };
+
+    cout << "Testing find_missing_number function:" << endl;
+    for (const auto& nums : test_cases) {
+        cout << "Input: [";
+        for (size_t i = 0; i < nums.size(); ++i) {
+            cout << nums[i];
+            if (i + 1 < nums.size()) cout << ", ";
+        }
+        cout << "] -> Missing: " << find_missing_number(nums) << endl;
+    }
+    return 0;
+}`} defaultLanguage="python" />
         </div>
       </>
     ),
@@ -3130,15 +3401,26 @@ const DsaRoadmapPage = () => {
 
   const currentTopic = topics.find((topic) => topic.id === selectedTopic);
 
+  useEffect(() => {
+    if (sidebarOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [sidebarOpen]);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 transition-all duration-500">
       {/* Mobile Header */}
-      <div className="lg:hidden bg-blue-600 text-white p-4">
+      <div className="lg:hidden bg-blue-600 dark:bg-blue-900 text-white p-4 shadow-md rounded-b-xl">
         <div className="flex items-center justify-between">
           <h1 className="text-xl font-bold">DSA Roadmap</h1>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-md hover:bg-blue-700 transition-colors"
+            className="p-2 rounded-md hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -3150,36 +3432,38 @@ const DsaRoadmapPage = () => {
       <div className="flex flex-col lg:flex-row">
         {/* Sidebar */}
         <div className={`
-          ${sidebarOpen ? 'fixed inset-y-0 left-0 z-50' : 'hidden'} 
+          ${sidebarOpen ? 'fixed inset-0 left-0 z-50 overflow-y-auto' : 'hidden'} 
           lg:relative lg:block 
           w-full lg:w-80 
-          bg-gray-50 
-          border-r border-gray-200 
+          bg-white/70 dark:bg-gray-950/80 backdrop-blur-xl shadow-xl border-r border-gray-200 dark:border-gray-800
           lg:min-h-screen
           lg:z-auto
+          transition-all duration-500
+          ${sidebarOpen ? '' : 'sticky top-0 rounded-r-2xl'}
+          lg:sticky lg:top-0 lg:rounded-r-2xl
         `}>
-          <DsaSidebar 
-            topics={topics} 
+          <DsaSidebar
+            topics={topics}
             onSelectTopic={(topic) => {
               setSelectedTopic(topic);
               setSidebarOpen(false); // Close sidebar on mobile after selection
-            }} 
-            selectedTopic={selectedTopic} 
+            }}
+            selectedTopic={selectedTopic}
           />
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 p-4 lg:p-6">
+        <div className="flex-1 p-4 lg:p-10">
           {/* Desktop Header */}
           <div className="hidden lg:block mb-8">
-            <h1 className="text-3xl font-bold text-center text-gray-800">Data Structures & Algorithms Roadmap</h1>
+            <h1 className="text-4xl font-extrabold text-center bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600 bg-clip-text text-transparent dark:from-blue-300 dark:via-blue-500 dark:to-blue-300 mb-4 tracking-tight drop-shadow-lg">Data Structures & Algorithms Roadmap</h1>
           </div>
 
           {/* Content Section */}
-          <section className="max-w-4xl mx-auto">
+          <section className="w-full max-w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto px-2 sm:px-4 md:px-6 lg:px-10">
             {currentTopic ? (
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 lg:p-6">
-                <div className="prose prose-sm lg:prose-base max-w-none">
+              <div className="bg-white/80 dark:bg-gray-900/80 rounded-lg sm:rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6 md:p-8 backdrop-blur-xl transition-all duration-500">
+                <div className="prose prose-sm lg:prose-base dark:prose-invert max-w-none">
                   {React.cloneElement(currentTopic.content, {
                     className: "text-sm lg:text-base"
                   })}
@@ -3187,7 +3471,7 @@ const DsaRoadmapPage = () => {
               </div>
             ) : (
               <div className="text-center py-12">
-                <p className="text-gray-600 text-sm lg:text-base">Select a topic from the sidebar to get started.</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm lg:text-base">Select a topic from the sidebar to get started.</p>
               </div>
             )}
           </section>
@@ -3197,7 +3481,7 @@ const DsaRoadmapPage = () => {
       {/* Mobile Overlay */}
       {sidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-0 lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}

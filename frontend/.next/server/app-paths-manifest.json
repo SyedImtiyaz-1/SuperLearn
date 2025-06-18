@@ -1,5 +1,4 @@
 {
-  "/roadmaps/dsa/page": "app/roadmaps/dsa/page.js",
   "/page": "app/page.js",
-  "/jobs/page": "app/jobs/page.js"
+  "/roadmaps/dsa/page": "app/roadmaps/dsa/page.js"
 }
