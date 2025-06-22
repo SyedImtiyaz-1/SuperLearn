@@ -16,6 +16,17 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Only C++ and Python are supported' }, { status: 400 });
     }
 
+    // Check if we're in a serverless environment that doesn't support code execution
+    const isServerless = process.env.VERCEL || process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME;
+    
+    if (isServerless) {
+      return NextResponse.json({ 
+        error: 'Code execution is not available in this deployment environment. This feature requires a server with compiler support.',
+        details: 'Serverless environments (Vercel, Netlify, etc.) do not support system-level code execution for security reasons.',
+        suggestion: 'For C++ execution, consider using a dedicated server or cloud IDE service.'
+      }, { status: 503 });
+    }
+
     // Create a temporary file
     const tempDir = tmpdir();
     const timestamp = Date.now();

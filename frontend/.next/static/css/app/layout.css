@@ -1457,14 +1457,11 @@ select {
 .top-0 {
   top: 0px;
 }
-.z-0 {
-  z-index: 0;
+.z-40 {
+  z-index: 40;
 }
 .z-50 {
   z-index: 50;
-}
-.z-40 {
-  z-index: 40;
 }
 .-m-1\.5 {
   margin: -0.375rem;
@@ -1533,6 +1530,9 @@ select {
 }
 .mt-8 {
   margin-top: 2rem;
+}
+.mt-3 {
+  margin-top: 0.75rem;
 }
 .block {
   display: block;
@@ -1809,9 +1809,6 @@ select {
 .whitespace-nowrap {
   white-space: nowrap;
 }
-.whitespace-pre {
-  white-space: pre;
-}
 .whitespace-pre-wrap {
   white-space: pre-wrap;
 }
@@ -1922,6 +1919,10 @@ select {
 }
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
+}
+.border-yellow-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(161 98 7 / var(--tw-border-opacity, 1));
 }
 .border-t-transparent {
   border-top-color: transparent;
@@ -2058,6 +2059,9 @@ select {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity, 1));
+}
+.bg-yellow-900\/50 {
+  background-color: rgb(113 63 18 / 0.5);
 }
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
@@ -2444,6 +2448,10 @@ select {
 .text-yellow-600 {
   --tw-text-opacity: 1;
   color: rgb(202 138 4 / var(--tw-text-opacity, 1));
+}
+.text-yellow-200 {
+  --tw-text-opacity: 1;
+  color: rgb(254 240 138 / var(--tw-text-opacity, 1));
 }
 .underline {
   text-decoration-line: underline;
@@ -5046,14 +5054,11 @@ select {
 .top-0 {
   top: 0px;
 }
-.z-0 {
-  z-index: 0;
+.z-40 {
+  z-index: 40;
 }
 .z-50 {
   z-index: 50;
-}
-.z-40 {
-  z-index: 40;
 }
 .-m-1\.5 {
   margin: -0.375rem;
@@ -5122,6 +5127,9 @@ select {
 }
 .mt-8 {
   margin-top: 2rem;
+}
+.mt-3 {
+  margin-top: 0.75rem;
 }
 .block {
   display: block;
@@ -5398,9 +5406,6 @@ select {
 .whitespace-nowrap {
   white-space: nowrap;
 }
-.whitespace-pre {
-  white-space: pre;
-}
 .whitespace-pre-wrap {
   white-space: pre-wrap;
 }
@@ -5511,6 +5516,10 @@ select {
 }
 .border-white\/20 {
   border-color: rgb(255 255 255 / 0.2);
+}
+.border-yellow-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(161 98 7 / var(--tw-border-opacity, 1));
 }
 .border-t-transparent {
   border-top-color: transparent;
@@ -5647,6 +5656,9 @@ select {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity, 1));
+}
+.bg-yellow-900\/50 {
+  background-color: rgb(113 63 18 / 0.5);
 }
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
@@ -6033,6 +6045,10 @@ select {
 .text-yellow-600 {
   --tw-text-opacity: 1;
   color: rgb(202 138 4 / var(--tw-text-opacity, 1));
+}
+.text-yellow-200 {
+  --tw-text-opacity: 1;
+  color: rgb(254 240 138 / var(--tw-text-opacity, 1));
 }
 .underline {
   text-decoration-line: underline;
