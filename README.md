@@ -1,4 +1,4 @@
-# SuperLearn
+# SuperLearn 
 
 SuperLearn is a modern platform designed to help freshers and tech enthusiasts land their first tech jobs. It offers curated job listings, structured learning paths, a supportive community, and more—all in a beautiful, user-friendly interface.
 
